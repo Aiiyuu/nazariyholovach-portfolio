@@ -1,1 +1,14 @@
+@use "sass:map";
 @use "./reset";
+@use "./typography";
+@use "./theme";
+@use "./animations";
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+a {
+  color: var(--text-color);
+}

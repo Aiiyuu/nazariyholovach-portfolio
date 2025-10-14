@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "./variables" as *;
+
+
+@mixin on-tablet {
+  @media (min-width: map.get($breakpoints, "tablet")) {
+    @content;
+  }
+}
+
+
+@mixin on-desktop {
+  @media (min-width: map.get($breakpoints, "desktop")) {
+    @content;
+  }
+}

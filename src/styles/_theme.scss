@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "./variables" as *;
+
+:root {
+  --text-color: #{map.get($colors, "dark")};
+  --text-color-invert: #{map.get($colors, "light")};
+
+  --bg-color: #{map.get($colors, "light")};
+  --bg-color-invert: #{map.get($colors, "dark")};
+  --bg-overlay: rgba(0, 0, 0, 0.715);
+}
+
+[data-theme="dark"] {
+  --text-color: #{map.get($colors, "light")};
+  --text-color-invert: #{map.get($colors, "dark")};
+
+  --bg-color: #{map.get($colors, "dark")};
+  --bg-color-invert: #{map.get($colors, "light")};
+  --bg-overlay: rgba(255, 255, 255, 0.715);
+}
+
+body {
+  background-color: var(--bg-color);
+}
