@@ -1,0 +1,65 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+
+$btn-padding: 8px;
+$circle-size: 18px;
+$btn-width: 55px;
+$btn-height: 30px;
+
+.theme-switcher {
+  cursor: pointer;
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: map.get($radius, "2xl");
+  border: 1px solid var(--bg-color-invert);
+  background: transparent;
+  transition: transform $base-transition $transition-bouncy;
+
+  width: $btn-width;
+  height: $btn-height;
+
+  padding: $btn-padding;
+
+  img {
+    width: 13px;
+    height: 13px;
+  }
+
+  img:last-child {
+    width: 16px;
+    height: 16px;
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 50%;
+
+    transition: all $base-transition ease;
+    background-color: var(--bg-color-invert);
+  }
+
+  &::after {
+    left: calc($btn-width - $circle-size - $btn-padding);
+  }
+
+  &:hover {
+    animation: bouncing $base-transition $transition-bouncy;
+  }
+
+  &:active {
+    animation: bigger-bouncing $base-transition $transition-bouncy;
+  }
+}
+
+[data-theme="dark"] .theme-switcher::after {
+  left: $btn-padding;
+}
+
