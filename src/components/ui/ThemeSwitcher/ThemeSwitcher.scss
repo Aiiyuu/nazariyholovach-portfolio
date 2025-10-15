@@ -49,14 +49,6 @@ $btn-height: 30px;
   &::after {
     left: calc($btn-width - $circle-size - $btn-padding);
   }
-
-  &:hover {
-    animation: bouncing $base-transition $transition-bouncy;
-  }
-
-  &:active {
-    animation: bigger-bouncing $base-transition $transition-bouncy;
-  }
 }
 
 [data-theme="dark"] .theme-switcher::after {

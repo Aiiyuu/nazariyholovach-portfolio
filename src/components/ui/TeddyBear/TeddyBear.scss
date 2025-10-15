@@ -50,15 +50,9 @@
   &:hover svg #eye-pupil_2 {
     transform: translate(-1px, -1px);
   }
-
-  &:active #teddy-bear {
-    animation: bounce 500ms ease;
-    transform-origin: center center;
-  }
 }
 
 $ear-offset: 2deg;
-$body-bounce: 1px;
 
 @keyframes shaking {
   0% {
@@ -93,23 +87,5 @@ $body-bounce: 1px;
   }
   100% {
     transform: rotate(0deg);
-  }
-}
-
-@keyframes bounce {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  30% {
-    transform: translateY(-$body-bounce) scale(1.05);
-  }
-  50% {
-    transform: translateY(0) scale(1);
-  }
-  70% {
-    transform: translateY(math.div($body-bounce, -2)) scale(0.98);
-  }
-  100% {
-    transform: translateY(0) scale(1);
   }
 }
