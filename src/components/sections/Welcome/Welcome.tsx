@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 import "./Welcome.scss";
 import astronautImg from "../../../assets/images/astronaut.svg";
 import StaggeredWords from "../../animations/StaggeredWords";

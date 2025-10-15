@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 import "./TeddyBear.scss";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";

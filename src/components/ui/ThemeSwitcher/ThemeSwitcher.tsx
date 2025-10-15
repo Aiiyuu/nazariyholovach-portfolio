@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 import "./ThemeSwitcher.scss";
 import moonIcon from "../../../assets/icons/moon.svg";
 import sunIcon from "../../../assets/icons/sun.svg";

@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 import "./Navbar.scss";
 import TeddyBear from "../../ui/TeddyBear";
 import ThemeSwitcher from "../../ui/ThemeSwitcher";
