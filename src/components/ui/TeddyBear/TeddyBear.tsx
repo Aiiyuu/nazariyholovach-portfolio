@@ -1,6 +1,7 @@
 import type React from "react";
 import "./TeddyBear.scss";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const EYE_OFFSET = 1;
 
@@ -39,7 +40,7 @@ const TeddyBear: React.FC = () => {
   };
 
   return (
-    <div className="teddy">
+    <motion.div className="teddy" whileTap={{ scale: 1.05 }}>
       <svg viewBox="0 0 38 43" xmlns="http://www.w3.org/2000/svg">
         <g id="teddy-bear">
           <path
@@ -303,7 +304,7 @@ const TeddyBear: React.FC = () => {
           </g>
         </g>
       </svg>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,5 +1,6 @@
 $max-container-width: 1500px;
 $base-transition: 300ms;
+$theme-transition: 800ms;
 $transition-bouncy: cubic-bezier(0.25, 2, 0.5, -0.75);
 
 $colors: (
@@ -9,6 +10,8 @@ $colors: (
 );
 
 $spacing: (
+  "5xl": 130px,
+  "4xl": 100px,
   "3xl": 80px,
   "2xl": 60px,
   "xl": 50px,
@@ -28,6 +31,9 @@ $radius: (
 
 
 $breakpoints: (
-  "tablet": 660px,
-  "desktop": 1200px
+  "wide-mobile": 480px,
+  "tablet": 720px,
+  "wide-tablet": 940px,
+  "desktop": 1200px,
+  "wide-desktop": 1500px
 );

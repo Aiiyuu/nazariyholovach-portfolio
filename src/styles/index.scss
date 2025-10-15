@@ -1,8 +1,8 @@
 @use "sass:map";
+@use "./variables" as *;
 @use "./reset";
 @use "./typography";
 @use "./theme";
-@use "./animations";
 
 body {
   color: var(--text-color);
@@ -11,4 +11,9 @@ body {
 
 a {
   color: var(--text-color);
+}
+
+* {
+  transition: background-color $theme-transition ease,
+    color $theme-transition ease;
 }

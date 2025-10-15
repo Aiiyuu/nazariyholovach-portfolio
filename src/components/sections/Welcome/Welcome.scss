@@ -1,0 +1,234 @@
+@use "sass:map";
+@use "../../../styles//variables" as *;
+@use "../../../styles/mixins" as *;
+
+.welcome {
+  text-align: center;
+  max-width: $max-container-width;
+  min-height: 100vh;
+  margin-inline: auto;
+
+  @include page-grid;
+
+  @include on-tablet {
+    margin-top: map.get($spacing, "5xl");
+    text-align: start;
+  }
+
+  @include on-wide-desktop {
+    text-align: start;
+    margin-inline: auto;
+  }
+
+  align-items: flex-start;
+
+  &__block {
+    grid-column: 1 / -1;
+  }
+
+  &__block:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+    background-color: var(--bg-color);
+    z-index: 2;
+
+    @include on-tablet {
+      background-color: unset;
+      grid-column: 1 / 5;
+      order: 1;
+      align-items: flex-start;
+    }
+
+    @include on-wide-tablet {
+      grid-column: 1 / 5;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 7;
+    }
+
+    @include on-wide-desktop {
+      grid-column: 3 / 7;
+    }
+  }
+
+  &__block:last-child {
+    order: 1;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: map.get($spacing, "xl");
+
+    @include on-tablet {
+      justify-content: flex-end;
+      margin-bottom: 0;
+      order: 2;
+      grid-column: 5 / -1;
+    }
+
+    @include on-wide-tablet {
+      grid-column: 5 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 12;
+    }
+
+    @include on-wide-desktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__block:last-child .nav__block-overlay {
+    content: "";
+
+    transform-origin: bottom center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 90%;
+    width: 100%;
+    bottom: 20px;
+    border-radius: map.get($radius, "xl");
+
+    transition: background-color calc($base-transition * 3) ease;
+    background-color: var(--bg-color-invert);
+
+    @include on-tablet {
+      width: 90%;
+    }
+  }
+
+  &__block:last-child img {
+    width: 50%;
+    position: relative;
+    z-index: 2;
+
+    transform-origin: bottom center;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    @include on-wide-tablet {
+      width: auto;
+    }
+  }
+
+  &__title {
+    transform-origin: bottom left;
+    text-transform: uppercase;
+    line-height: 60px;
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: map.get($spacing, "lg");
+
+    @include on-wide-mobile {
+      font-size: 3rem;
+      line-height: 90px;
+    }
+
+    @include on-tablet {
+      line-height: 80px;
+      font-size: 2.5rem;
+    }
+
+    @include on-wide-tablet {
+      line-height: 120px;
+      font-size: 3.5rem;
+      margin-bottom: map.get($spacing, "xl");
+    }
+
+    @include on-desktop {
+      font-size: 3.4rem;
+    }
+
+    div {
+      font-size: 5rem;
+
+      @include on-wide-mobile {
+        font-size: 8rem;
+      }
+
+      @include on-tablet {
+        font-size: 6rem;
+      }
+
+      @include on-wide-tablet {
+        font-size: 8.5rem;
+      }
+    }
+  }
+
+  &__text {
+    max-width: 530px;
+    font-size: 1.5rem;
+    margin-bottom: map.get($spacing, "lg");
+
+    @include on-wide-tablet {
+      margin-bottom: map.get($spacing, "xl");
+    }
+  }
+
+  &__achievement-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: map.get($spacing, "lg");
+    margin-bottom: map.get($spacing, "2xl");
+
+    @include on-wide-mobile {
+      flex-direction: row;
+    }
+
+    @include on-tablet {
+      margin-bottom: map.get($spacing, "xl");
+    }
+
+    @include on-desktop {
+      margin-bottom: map.get($spacing, "2xl");
+    }
+  }
+
+  &__achievement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-wide-mobile {
+      flex-direction: row;
+    }
+  }
+
+  &__achievement-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 70px;
+    border-radius: map.get($radius, "lg");
+    background-color: var(--bg-color-invert);
+    color: var(--text-color-invert);
+    font-size: 2.5rem;
+    font-weight: 900;
+  }
+
+  &__achievement-description {
+    font-size: 1.1rem;
+    font-weight: bold;
+    max-width: 120px;
+    margin-top: map.get($spacing, "sm");
+
+    @include on-wide-mobile {
+      margin-top: 0;
+      margin-left: map.get($spacing, "sm");
+    }
+  }
+}
