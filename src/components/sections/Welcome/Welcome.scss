@@ -124,23 +124,23 @@
     transform-origin: bottom left;
     text-transform: uppercase;
     line-height: 60px;
-    font-size: 2rem;
+    font-size: map.get($font-sizes, "lg");
     font-weight: normal;
     margin-bottom: map.get($spacing, "lg");
 
     @include on-wide-mobile {
-      font-size: 3rem;
+      font-size: map.get($font-sizes, "2xl");
       line-height: 90px;
     }
 
     @include on-tablet {
       line-height: 80px;
-      font-size: 2.5rem;
+      font-size: map.get($font-sizes, "xl");
     }
 
     @include on-wide-tablet {
       line-height: 120px;
-      font-size: 3.5rem;
+      font-size: map.get($font-sizes, "3xl");
       margin-bottom: map.get($spacing, "xl");
     }
 
@@ -149,25 +149,25 @@
     }
 
     div {
-      font-size: 5rem;
+      font-size: map.get($font-sizes, "5xl");
 
       @include on-wide-mobile {
-        font-size: 8rem;
+        font-size: map.get($font-sizes, "7xl");
       }
 
       @include on-tablet {
-        font-size: 6rem;
+        font-size: map.get($font-sizes, "6xl");
       }
 
       @include on-wide-tablet {
-        font-size: 8.5rem;
+        font-size: map.get($font-sizes, "8xl");
       }
     }
   }
 
   &__text {
     max-width: 530px;
-    font-size: 1.5rem;
+    font-size: map.get($font-sizes, "md");
     margin-bottom: map.get($spacing, "lg");
 
     @include on-wide-tablet {
@@ -216,12 +216,12 @@
     border-radius: map.get($radius, "lg");
     background-color: var(--bg-color-invert);
     color: var(--text-color-invert);
-    font-size: 2.5rem;
+    font-size: map.get($font-sizes, "xl");
     font-weight: 900;
   }
 
   &__achievement-description {
-    font-size: 1.1rem;
+    font-size: map.get($font-sizes, "sm");
     font-weight: bold;
     max-width: 120px;
     margin-top: map.get($spacing, "sm");
