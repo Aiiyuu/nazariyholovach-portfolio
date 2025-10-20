@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../../../styles//variables" as *;
+
+.btn {
+  text-transform: uppercase;
+  background-color: var(--bg-color-invert);
+  color: var(--text-color-invert);
+  font-family: var(--playful-font);
+  font-size: map.get($font-sizes, "md");
+
+  cursor: pointer;
+  border-radius: map.get($radius, "xl");
+  padding: 20px 25px;
+  white-space: nowrap;
+  overflow: hidden;
+
+  transition: background-color $theme-transition ease,
+    color $theme-transition ease;
+
+  &:hover {
+    background-color: var(--bg-color-lighter-invert);
+  }
+}

@@ -139,13 +139,9 @@
     }
 
     @include on-wide-tablet {
-      line-height: 120px;
+      line-height: 100px;
       font-size: map.get($font-sizes, "3xl");
       margin-bottom: map.get($spacing, "xl");
-    }
-
-    @include on-desktop {
-      font-size: 3.4rem;
     }
 
     div {
