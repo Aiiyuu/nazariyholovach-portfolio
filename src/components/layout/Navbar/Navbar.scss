@@ -142,7 +142,7 @@
     text-transform: capitalize;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-size: 2rem;
+    font-size: map.get($font-sizes, "lg");
     text-align: center;
     font-family: "Luckiest-Guy", cursive;
 
