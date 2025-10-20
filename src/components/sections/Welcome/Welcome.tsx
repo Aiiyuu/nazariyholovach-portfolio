@@ -6,6 +6,7 @@ import StaggeredLines from "../../animations/StaggeredLines";
 import SlideIn from "../../animations/SlideIn";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef } from "react";
+import Button from "../../ui/Button";
 
 const imgOverlayVariant: Variants = {
   hidden: {
@@ -78,7 +79,11 @@ const Welcome: React.FC = () => {
           </div>
         </div>
 
-        <div className="welcome__button">I'll add button later</div>
+        <div className="welcome__btn">
+          <SlideIn delay={0.3}>
+            <Button>More about me</Button>
+          </SlideIn>
+        </div>
       </div>
 
       <motion.div

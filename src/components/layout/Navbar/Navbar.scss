@@ -144,7 +144,7 @@
     color: var(--text-color);
     font-size: map.get($font-sizes, "lg");
     text-align: center;
-    font-family: "Luckiest-Guy", cursive;
+    font-family: var(--playful-font);
 
     display: flex;
     flex-direction: column;

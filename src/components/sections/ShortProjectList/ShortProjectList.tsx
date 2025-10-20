@@ -6,6 +6,7 @@ import SlideIn from "../../animations/SlideIn";
 import StaggeredWords from "../../animations/StaggeredWords";
 import StaggeredLines from "../../animations/StaggeredLines";
 import { motion, Variants } from "framer-motion";
+import Button from "../../ui/Button";
 
 const shortProjectItemVariants: Variants = {
   hidden: (index: number) => ({
@@ -89,6 +90,12 @@ const ShortProjectList: React.FC = () => {
             </motion.li>
           ))}
         </ul>
+      </div>
+
+      <div className="short-project__btn">
+        <SlideIn>
+          <Button>All works</Button>
+        </SlideIn>
       </div>
     </div>
   );
