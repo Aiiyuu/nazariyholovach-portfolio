@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 interface StaggeredLinesProps {
   children: string;
   delay?: number;
+  duration?: number;
 }
 
 const StaggeredLines: React.FC<StaggeredLinesProps> = ({
   children,
   delay = 0.15,
+  duration = 0.2,
 }) => {
   const lines = children.split("//n");
 
@@ -21,7 +23,7 @@ const StaggeredLines: React.FC<StaggeredLinesProps> = ({
           whileInView={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
           transition={{
             delay: delay + index * 0.1,
-            duration: 0.2,
+            duration: duration,
             type: "tween",
           }}
           style={{

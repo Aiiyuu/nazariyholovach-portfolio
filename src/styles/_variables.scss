@@ -5,7 +5,11 @@ $transition-bouncy: cubic-bezier(0.25, 2, 0.5, -0.75);
 
 $colors: (
   "dark": #161528,
+  "slightly-dark": #302E3C,
+  "grey": #808080,
+  "light-grey": #a3a3a3,
   "light": #f5f1eb,
+  "white": #fff,
   "red": #ff5f61,
 );
 
@@ -31,7 +35,9 @@ $radius: (
 
 $font-sizes: (
   "base": 1rem,
-  "sm": 1.1rem,
+  "2xs": 0.85rem,
+  "xs": 1.1rem,
+  "sm": 1.25rem,
   "md": 1.5rem,
   "lg": 2rem,
   "xl": 2.5rem,
@@ -41,7 +47,7 @@ $font-sizes: (
   "5xl": 5rem,
   "6xl": 6rem,
   "7xl": 8rem,
-  "8xl": 8.5rem, 
+  "8xl": 8.5rem,
 );
 
 $breakpoints: (

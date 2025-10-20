@@ -221,7 +221,7 @@
   }
 
   &__achievement-description {
-    font-size: map.get($font-sizes, "sm");
+    font-size: map.get($font-sizes, "xs");
     font-weight: bold;
     max-width: 120px;
     margin-top: map.get($spacing, "sm");
