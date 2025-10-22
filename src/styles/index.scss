@@ -1,1 +1,19 @@
+@use "sass:map";
+@use "./variables" as *;
 @use "./reset";
+@use "./typography";
+@use "./theme";
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+a {
+  color: var(--text-color);
+}
+
+* {
+  transition: background-color $theme-transition ease,
+    color $theme-transition ease;
+}

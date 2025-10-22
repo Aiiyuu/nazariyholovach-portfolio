@@ -1,7 +1,16 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["react", "react-dom"],
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+  },
+  "include": [
+    "src/**/*"
+  ],
 }

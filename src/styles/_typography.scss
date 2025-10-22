@@ -1,0 +1,35 @@
+@use "sass:map";
+@use "./variables" as *;
+
+@font-face {
+  font-family: "Luckiest-Guy";
+  src: url("../assets/fonts/LuckiestGuy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --regular-font: "Roboto", sans-serif;
+  --playful-font: "Luckiest-Guy", cursive;
+}
+
+html {
+  font-size: map.get($font-sizes, "base");
+}
+
+body {
+  font-family: var(--regular-font);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--playful-font);
+}

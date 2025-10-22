@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "./variables" as *;
+
+:root {
+  --text-color: #{map.get($colors, "dark")};
+  --text-color-invert: #{map.get($colors, "light")};
+  --text-grey-color: #{map.get($colors, "grey")};
+
+  --bg-color: #{map.get($colors, "light")};
+  --bg-color-lighter: #{map.get($colors, "white")};
+  --bg-color-lighter-invert: #{map.get($colors, "slightly-dark")};
+  --bg-color-invert: #{map.get($colors, "dark")};
+  --bg-overlay: rgba(0, 0, 0, 0.915);
+  --nav-overlay: rgba(245, 241, 235, 0.4);
+}
+
+[data-theme="dark"] {
+  --text-color: #{map.get($colors, "light")};
+  --text-color-invert: #{map.get($colors, "dark")};
+  --text-grey-color: #{map.get($colors, "light-grey")};
+
+  --bg-color: #{map.get($colors, "dark")};
+  --bg-color-invert: #{map.get($colors, "light")};
+  --bg-color-lighter: #{map.get($colors, "slightly-dark")};
+  --bg-color-lighter-invert: #{map.get($colors, "white")};
+  --bg-overlay: rgba(255, 255, 255, 0.915);
+  --nav-overlay: rgba(22, 21, 40, 0.4);
+}
+
+body {
+  background-color: var(--bg-color);
+}
