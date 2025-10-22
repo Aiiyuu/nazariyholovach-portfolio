@@ -6,24 +6,10 @@ import { useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import SlideIn from "../../animations/SlideIn";
-
-type PageLink = {
-  content: string;
-};
+import { Link, NavLink } from "react-router-dom";
+import { pageLinks } from "../../../data/pageLinks";
 
 const BASE_DURATION = 0.3;
-
-const pageLinks: PageLink[] = [
-  {
-    content: "work",
-  },
-  {
-    content: "about",
-  },
-  {
-    content: "contact",
-  },
-];
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,18 +33,23 @@ const Navbar: React.FC = () => {
       >
         <div className="nav__wrapper">
           <SlideIn>
-            <a className="nav__brand" href="#">
+            <Link to="/" className="nav__brand">
               <TeddyBear />
-            </a>
+            </Link>
           </SlideIn>
 
           <ul className="nav__list">
             {pageLinks.map((link, index) => (
               <SlideIn delay={BASE_DURATION + 0.1 * index} key={link.content}>
                 <li className="nav__item">
-                  <a className="nav__link" href="#">
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      clsx("nav__link", { "nav__link--active": isActive })
+                    }
+                  >
                     {link.content}
-                  </a>
+                  </NavLink>
                 </li>
               </SlideIn>
             ))}
@@ -86,9 +77,13 @@ const Navbar: React.FC = () => {
               <ul className="nav__adaptive-menu-list">
                 {pageLinks.map((link, index) => (
                   <li className="nav__adaptive-menu-item" key={link.content}>
-                    <a
-                      className="nav__adaptive-menu-link"
-                      href="#"
+                    <NavLink
+                      to={link.path}
+                      className={({ isActive }) =>
+                        clsx("nav__adaptive-menu-link", {
+                          "nav__adaptive-menu-link--active": isActive,
+                        })
+                      }
                       style={{
                         transitionDelay: isMenuOpen
                           ? `${index * 200}ms`
@@ -96,7 +91,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       {link.content}
-                    </a>
+                    </NavLink>
                   </li>
                 ))}
               </ul>

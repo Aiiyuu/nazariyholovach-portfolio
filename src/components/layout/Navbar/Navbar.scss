@@ -92,6 +92,11 @@
     text-transform: capitalize;
   }
 
+  &__link--active,
+  &__adaptive-menu-link--active {
+    text-decoration: line-through;
+  }
+
   &__theme-btn {
     margin-left: auto;
   }
