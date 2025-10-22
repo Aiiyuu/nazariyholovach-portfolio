@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import "./App.scss";
 import Navbar from "./components/layout/Navbar";
-import Welcome from "./components/sections/Welcome/Welcome";
 import Lenis from "@studio-freight/lenis";
-import ShortProjectList from "./components/sections/ShortProjectList";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -29,8 +28,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Welcome />
-      <ShortProjectList />
+      <Outlet />
     </>
   );
 }
