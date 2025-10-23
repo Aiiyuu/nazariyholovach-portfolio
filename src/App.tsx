@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import "./App.scss";
 import Navbar from "./components/layout/Navbar";
 import Lenis from "@studio-freight/lenis";
 import { Outlet } from "react-router-dom";
+import Footer from "./components/layout/Footer";
 
 function App() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -29,6 +29,7 @@ function App() {
     <>
       <Navbar />
       <Outlet />
+      <Footer />
     </>
   );
 }

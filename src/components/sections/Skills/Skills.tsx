@@ -55,7 +55,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <div className="skills">
+    <div id="skills" className="skills">
       <h2 className="skills__title">
         <StaggeredLines>You need</StaggeredLines>
       </h2>

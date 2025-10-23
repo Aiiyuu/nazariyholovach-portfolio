@@ -1,0 +1,130 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.footer {
+  margin-top: map.get($spacing, "6xl");
+
+  @include page-grid;
+  grid-template-rows: repeat(2, 1fr);
+  margin-inline: auto;
+  gap: 0;
+
+  &__section {
+    display: flex;
+    justify-content: center;
+    padding: map.get($spacing, "lg");
+
+    &:nth-child(1) {
+      grid-column: 1/-1;
+      text-align: center;
+
+      @include on-tablet {
+        text-align: start;
+      }
+
+      @include on-desktop {
+        grid-column: 1/5;
+        grid-row: 1;
+      }
+    }
+
+    &:nth-child(2) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: map.get($colors, "pink");
+      color: map.get($colors, "light");
+      grid-column: 1/-1;
+
+      @include on-desktop {
+        grid-column: 1/5;
+        grid-row: 2;
+      }
+    }
+
+    &:nth-child(3) {
+      background-color: var(--bg-color-invert);
+      color: var(--text-color-invert);
+      grid-column: 1/-1;
+
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+
+      justify-content: space-evenly;
+      column-gap: map.get($spacing, "md");
+      row-gap: map.get($spacing, "xl");
+
+      @include on-tablet {
+        align-items: flex-start;
+        flex-direction: row;
+        text-align: start;
+      }
+
+      @include on-desktop {
+        grid-column: 5/-1;
+        grid-row: 1/-1;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spacing, "md");
+  }
+
+  &__item {
+    cursor: pointer;
+    text-transform: capitalize;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &--bold {
+      cursor: default;
+      font-weight: 600;
+      font-size: map.get($font-sizes, "md");
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    a {
+      color: var(--text-color-invert);
+    }
+  }
+
+  &__license {
+    font-weight: 600;
+    font-size: map.get($font-sizes, "xs");
+  }
+
+  &__social-networks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: map.get($spacing, "lg");
+  }
+
+  &__social-networks-item {
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    * {
+      transition: fill $theme-transition ease;
+      fill: var(--bg-color);
+    }
+
+    #dark {
+      fill: var(--bg-color-invert);
+    }
+  }
+}
