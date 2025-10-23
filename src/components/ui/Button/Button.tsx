@@ -1,11 +1,15 @@
 import React, { ReactNode } from "react";
 import "./Button.scss";
 import { Variants, motion } from "framer-motion";
+import clsx from "clsx";
+
+type ButtonSize = "xs" | "sm" | "md" | "lg";
 
 type ButtonProps = {
   children: ReactNode;
   type?: "submit" | "reset" | "button";
-  delay?: number;
+  color?: string;
+  size?: ButtonSize; 
 };
 
 const buttonVariants: Variants = {
@@ -26,10 +30,15 @@ const buttonVariants: Variants = {
 const Button: React.FC<ButtonProps> = ({
   children,
   type = "button",
+  color,
+  size = "lg",
 }) => {
   return (
     <motion.button
-      className="btn"
+      className={clsx("btn", {
+        [`btn--${color}`]: color,
+        [`btn--${size}`]: size,
+      })}
       type={type}
       variants={buttonVariants}
       initial="hidden"
