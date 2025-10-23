@@ -4,11 +4,15 @@ import { motion } from "framer-motion";
 interface StaggeredWordsProps {
   children: string;
   delay?: number;
+  rotate?: number;
+  y?: number;
 }
 
 const StaggeredWords: React.FC<StaggeredWordsProps> = ({
   children,
   delay = 0.15,
+  rotate = 10,
+  y = 10,
 }) => {
   const words = children.split(" ");
 
@@ -17,7 +21,7 @@ const StaggeredWords: React.FC<StaggeredWordsProps> = ({
       {words.map((word, index) => (
         <motion.span
           key={word + index}
-          initial={{ opacity: 0, y: 10, rotate: 5, scale: 0.6 }}
+          initial={{ opacity: 0, y, rotate, scale: 0.6 }}
           whileInView={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
           transition={{
             delay: delay + index * 0.1,

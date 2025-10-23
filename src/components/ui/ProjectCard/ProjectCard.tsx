@@ -1,38 +1,90 @@
-import React from "react";
-import { ProjectCardInterface } from "../../../types/ProjectCardInterface";
+import React, { useRef } from "react";
 import "./ProjectCard.scss";
+import { ProjectCardInterface } from "../../../types/ProjectCardInterface";
+import { motion, useScroll, useTransform } from "framer-motion";
 import SlideIn from "../../animations/SlideIn";
+import Button from "../Button";
+import clsx from "clsx";
+import StaggeredWords from "../../animations/StaggeredWords";
 
-type ProjectCardProps = {
+type Props = {
   project: ProjectCardInterface;
+  zIndex: number;
 };
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const { thumbnail, name, stack } = project;
+const ProjectCard: React.FC<Props> = ({ project, zIndex }) => {
+  const { thumbnail, name, slogan, overlay, stack, demoLink } = project;
+  const cardRef = useRef<HTMLDivElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start 80px", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 1000]);
+  const opacity = useTransform(scrollYProgress, [0.3, 1], [1, 0]);
 
   return (
-    <article className="project-card">
+    <motion.div
+      ref={cardRef}
+      className="project-card"
+      style={{ scale, y, opacity, zIndex }}
+    >
       <img
-        className="project-card__img"
         loading="lazy"
+        className="project-card__img"
         src={thumbnail}
-        alt={`${name}'s image`}
+        alt={name}
       />
 
-      <div className="project-card__body">
-        <SlideIn>
-          <h4 className="project-card__title">{name}</h4>
-        </SlideIn>
+      <div className="project-card__wrapper">
+        <div
+          className={clsx("project-card__overlay", {
+            [`project-card__overlay--${overlay}`]: overlay,
+          })}
+        >
+          <SlideIn delay={0.2}>
+            <h4 className="project-card__slogan">{slogan}</h4>
+          </SlideIn>
 
-        <ul className="project-card__list">
-          {stack.map((item, index) => (
-            <li key={item} className="project-card__item">
-              <SlideIn delay={0.2 * index}>{item}</SlideIn>
-            </li>
-          ))}
-        </ul>
+          <h1 className="project-card__title">
+            <StaggeredWords delay={0.3} rotate={0} y={50}>
+              {name}
+            </StaggeredWords>
+          </h1>
+
+          <ul className="project-card__stack">
+            {stack.map((item, index) => (
+              <SlideIn
+                offset={40}
+                key={`${name}-${item}`}
+                delay={0.1 * index + 0.4}
+              >
+                <li className="project-card__stack-item">{item}</li>
+              </SlideIn>
+            ))}
+          </ul>
+        </div>
+
+        <div className="project-card__btn-group">
+          <SlideIn delay={0.5 + 0.1 * stack.length}>
+            <Button size="md" color="pink">
+              Explore
+            </Button>
+          </SlideIn>
+
+          {demoLink && (
+            <SlideIn delay={0.6 + 0.1 * stack.length}>
+              <a href={demoLink} target="_blank">
+                <Button size="md" color="pink">
+                  Demo
+                </Button>
+              </a>
+            </SlideIn>
+          )}
+        </div>
       </div>
-    </article>
+    </motion.div>
   );
 };
 
