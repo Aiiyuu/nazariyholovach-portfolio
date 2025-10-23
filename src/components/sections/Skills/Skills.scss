@@ -1,0 +1,89 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.skills {
+  max-width: $max-container-width;
+  margin-inline: auto;
+  margin-top: map.get($spacing, "5xl");
+  padding: map.get($spacing, "sm") map.get($spacing, "md");
+
+  @include on-tablet {
+    padding: map.get($spacing, "sm") map.get($spacing, "xl");
+    margin-top: map.get($spacing, "6xl");
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: map.get($font-sizes, "md");
+    font-weight: normal;
+    margin-bottom: map.get($spacing, "sm");
+
+    @include on-tablet {
+      font-size: map.get($font-sizes, "lg");
+    }
+  }
+
+  &__waver {
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, "md");
+  }
+
+  &__waver-btn {
+    cursor: pointer;
+    min-width: 35px;
+    min-height: 35px;
+    width: 35px;
+    height: 35px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      #change-bg {
+        fill: var(--bg-color-invert);
+        transition: fill $theme-transition ease;
+      }
+
+      #change-arrow-1,
+      #change-arrow-2 {
+        fill: var(--bg-color);
+        transition: fill $theme-transition ease;
+      }
+    }
+  }
+
+  &__waver-item {
+    text-transform: uppercase;
+    font-size: map.get($font-sizes, "lg");
+    font-family: var(--playful-font);
+
+    @include on-tablet {
+      font-size: map.get($font-sizes, "2xl");
+    }
+  }
+
+  &__list {
+    margin-top: map.get($spacing, "4xl");
+
+    --cols: 1;
+
+    @include page-grid;
+    margin-inline: 0;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: map.get($spacing, "md");
+
+    @include on-tablet {
+      --cols: 2;
+    }
+
+    @include on-desktop {
+      --cols: 3;
+    }
+  }
+
+  &__item {
+    transform-origin: bottom left;
+  }
+}

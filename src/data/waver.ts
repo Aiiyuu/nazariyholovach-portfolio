@@ -1,0 +1,11 @@
+export const waverList: string[] = [
+  "A Web Application",
+  "A Full-Scale Web Platform",
+  "A Web Game",
+  "A Responsive Website",
+  "Me",
+  "You",
+  "Us",
+  "Together",
+  "Forever",
+];
