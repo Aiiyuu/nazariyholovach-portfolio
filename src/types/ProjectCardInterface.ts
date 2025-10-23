@@ -3,5 +3,8 @@ export interface ProjectCardInterface {
   name: string;
   stack: string[];
   slogan: string;
-  arrowPath: string;
+  overlay: Overlay;
+  demoLink?: string;
 }
+
+type Overlay = "dark" | "light";

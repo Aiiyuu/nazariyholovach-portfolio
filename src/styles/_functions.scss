@@ -1,0 +1,11 @@
+@function modify-color($color, $operation, $percentage) {
+  @if $operation == "lighten" {
+    @return lighten($color, $percentage);
+  }
+
+  @if $operation == "darken" {
+    @return darken($color, $percentage);
+  }
+
+  @return $color;
+}

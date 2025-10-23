@@ -34,8 +34,8 @@ export const skillsList: Skill[] = [
     title: "Backend Development",
     stack: [
       "після того як пройду ноду тут щось напишу",
-      "REST Framework",
-      "PostgreSQL"
+      // "REST Framework",
+      // "PostgreSQL"
     ],
   },
 ];
