@@ -43,7 +43,7 @@ const Welcome: React.FC = () => {
   const astronautOpacity = useTransform(scrollYProgress, [0.3, 1], [1, 0.8]);
 
   return (
-    <div className="welcome" ref={welcomeRef}>
+    <div id="introduction" className="welcome" ref={welcomeRef}>
       <div className="welcome__block">
         <h1 className="welcome__title">
           <StaggeredWords delay={0.02}>Where Code Meets</StaggeredWords>

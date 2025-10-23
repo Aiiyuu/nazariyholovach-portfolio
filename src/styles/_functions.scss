@@ -1,10 +1,12 @@
+@use "sass:color";
+
 @function modify-color($color, $operation, $percentage) {
   @if $operation == "lighten" {
-    @return lighten($color, $percentage);
+    @return color.adjust($color, $lightness: $percentage);
   }
 
   @if $operation == "darken" {
-    @return darken($color, $percentage);
+    @return color.adjust($color, $lightness: -$percentage);
   }
 
   @return $color;

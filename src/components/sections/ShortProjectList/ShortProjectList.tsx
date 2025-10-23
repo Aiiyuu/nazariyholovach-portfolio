@@ -9,7 +9,7 @@ import ProjectCard from "../../ui/ProjectCard";
 
 const ShortProjectList: React.FC = () => {
   return (
-    <div className="short-project">
+    <div id="main-projects" className="short-project">
       <h2 className="short-project__title">
         <StaggeredWords>A Universe of my</StaggeredWords>
         <span className="short-project__title-main">
