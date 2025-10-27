@@ -7,6 +7,7 @@ import SlideIn from "../../animations/SlideIn";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef } from "react";
 import Button from "../../ui/Button";
+import { useTranslation } from "react-i18next";
 
 const imgOverlayVariant: Variants = {
   hidden: {
@@ -42,21 +43,21 @@ const Welcome: React.FC = () => {
   const astronautY = useTransform(scrollYProgress, [0.3, 1], [0, 230]);
   const astronautOpacity = useTransform(scrollYProgress, [0.3, 1], [1, 0.8]);
 
+  const { t } = useTranslation(["welcome", "common"]);
+
   return (
     <div id="introduction" className="welcome" ref={welcomeRef}>
       <div className="welcome__block">
         <h1 className="welcome__title">
-          <StaggeredWords delay={0.02}>Where Code Meets</StaggeredWords>
+          <StaggeredWords delay={0.02}>{t("welcome:title.title")}</StaggeredWords>
 
           <br />
 
-          <StaggeredLines>Cosmos</StaggeredLines>
+          <StaggeredLines>{t("welcome:title.main")}</StaggeredLines>
         </h1>
 
         <div className="welcome__text">
-          <StaggeredLines>
-            Glad you’ve found this place – relax,//nthe code’s mostly stable
-          </StaggeredLines>
+          <StaggeredLines>{t("welcome:text")}</StaggeredLines>
         </div>
 
         <div className="welcome__achievement-section">
@@ -65,7 +66,9 @@ const Welcome: React.FC = () => {
               <h4 className="welcome__achievement-title">13</h4>
             </SlideIn>
             <div className="welcome__achievement-description">
-              <StaggeredLines>projects//ncompleted</StaggeredLines>
+              <StaggeredLines>
+                {t("welcome:welcomeExperience.projectsCompleted")}
+              </StaggeredLines>
             </div>
           </div>
 
@@ -74,14 +77,16 @@ const Welcome: React.FC = () => {
               <h4 className="welcome__achievement-title">1</h4>
             </SlideIn>
             <div className="welcome__achievement-description">
-              <StaggeredLines>years of//nexperience</StaggeredLines>
+              <StaggeredLines>
+                {t("welcome:welcomeExperience.yearsOfExperience")}
+              </StaggeredLines>
             </div>
           </div>
         </div>
 
         <div className="welcome__btn">
           <SlideIn delay={0.3}>
-            <Button>More about me</Button>
+            <Button>{t("common:aboutMeBtn")}</Button>
           </SlideIn>
         </div>
       </div>

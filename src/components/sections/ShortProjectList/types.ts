@@ -1,8 +1,7 @@
-export interface ProjectCardInterface {
+export interface ProjectCard {
+  id: string;
   thumbnail: string;
-  name: string;
   stack: string[];
-  slogan: string;
   overlay: Overlay;
   demoLink?: string;
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import { footerLists, socialNetworks } from "../../../data/footer";
+import { footerLists, socialNetworks } from "./data";
 import "./Footer.scss";
 import clsx from "clsx";
 import SlideIn from "../../animations/SlideIn";
 import { motion, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const SocialNetworkVariants: Variants = {
   hover: {
@@ -18,6 +19,7 @@ const SocialNetworkVariants: Variants = {
 };
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation("footer");
   return (
     <footer className="footer">
       <section className="footer__section">
@@ -42,9 +44,7 @@ const Footer: React.FC = () => {
 
       <section className="footer__section">
         <SlideIn offset={40} delay={0.1 * socialNetworks.length}>
-          <p className="footer__license">
-            © 2025 Nazariy Holovach — free to explore under MIT
-          </p>
+          <p className="footer__license">{t("footer.copyright")}</p>
         </SlideIn>
       </section>
 
@@ -53,23 +53,27 @@ const Footer: React.FC = () => {
           <ul key={index} className="footer__list">
             {list.map((item, itemIndex) => (
               <li
-                key={item.content}
+                key={t(`footer.${item.id}`)}
                 className={clsx("footer__item", {
                   "footer__item--bold": item.title,
                 })}
               >
                 <SlideIn offset={40} delay={0.1 * itemIndex}>
-                  {item.title && <p>{item.content}</p>}
+                  {item.title && <p>{t(`${item.id}`)}</p>}
 
                   {item.demo && (
                     <a href={item.demo} target="_blank">
-                      {item.content}
+                      {t(`${item.id}`)}
                     </a>
                   )}
 
-                  {item.page && <Link to={item.page}>{item.content}</Link>}
+                  {item.page && (
+                    <Link to={item.page}>{t(`${item.id}`)}</Link>
+                  )}
 
-                  {item.navigate && <a href={item.navigate}>{item.content}</a>}
+                  {item.navigate && (
+                    <a href={item.navigate}>{t(`${item.id}`)}</a>
+                  )}
                 </SlideIn>
               </li>
             ))}

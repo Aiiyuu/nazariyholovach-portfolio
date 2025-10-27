@@ -1,6 +1,5 @@
 export interface Skill {
-  id: number;
+  id: string;
   logo: string;
-  title: string;
   stack: string[];
 }

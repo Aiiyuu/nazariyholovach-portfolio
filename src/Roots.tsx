@@ -11,7 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 const Root = () => (
   <Router basename="/nazariyholovach-portfolio">
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path="/:lng" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
 
@@ -20,6 +20,8 @@ const Root = () => (
         <Route path="contact" element={<p>contact</p>} />
       </Route>
 
+      <Route path="/" element={<Navigate to="/en" replace />} />
+      
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </Router>

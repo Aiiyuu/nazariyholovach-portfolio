@@ -1,9 +1,10 @@
 import React from "react";
-import { Skill } from "../../../types/SkillInterface";
+import { Skill } from "./types";
 import "./SkillCard.scss";
 import SlideIn from "../../animations/SlideIn";
 import StaggeredWords from "../../animations/StaggeredWords";
 import { motion, Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   skill: Skill;
@@ -27,18 +28,19 @@ const stackItemVariants: Variants = {
 };
 
 const SkillCard: React.FC<Props> = ({ skill }) => {
-  const { logo, title, stack } = skill;
+  const { id, logo, stack } = skill;
+  const { t } = useTranslation("skills");
 
   return (
     <div className="skill-card">
       <SlideIn delay={0.4}>
         <div className="skill-card__logo">
-          <img src={logo} alt={title} />
+          <img src={logo} alt={t(`${id}`)} />
         </div>
       </SlideIn>
 
       <h2 className="skill-card__title">
-        <StaggeredWords delay={0.5}>{title}</StaggeredWords>
+        <StaggeredWords delay={0.5}>{t(`${id}`)}</StaggeredWords>
       </h2>
 
       <ul className="skill-card__stack">

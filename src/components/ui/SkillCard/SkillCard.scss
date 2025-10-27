@@ -25,6 +25,7 @@
   }
 
   &__title {
+    text-transform: uppercase;
     font-size: map.get($font-sizes, "md");
     margin-bottom: map.get($spacing, "lg");
     text-align: center;

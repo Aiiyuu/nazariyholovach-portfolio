@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["i18n.ts"],
+      "options": {
+        "printWidth": 999
+      }
+    }
+  ]
+}

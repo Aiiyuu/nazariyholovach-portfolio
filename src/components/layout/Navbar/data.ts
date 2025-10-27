@@ -1,4 +1,4 @@
-import { PageLink } from "../types/PageLinkType";
+import { PageLink } from "./types";
 
 export const pageLinks: PageLink[] = [
   {

@@ -7,11 +7,14 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import SlideIn from "../../animations/SlideIn";
 import { Link, NavLink } from "react-router-dom";
-import { pageLinks } from "../../../data/pageLinks";
+import { pageLinks } from "./data";
+import LanguageSwitcher from "../../ui/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const BASE_DURATION = 0.3;
 
 const Navbar: React.FC = () => {
+  const { t } = useTranslation('nav');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNavOpen = () => {
@@ -48,15 +51,19 @@ const Navbar: React.FC = () => {
                       clsx("nav__link", { "nav__link--active": isActive })
                     }
                   >
-                    {link.content}
+                    {t(`links.${link.content}`)}
                   </NavLink>
                 </li>
               </SlideIn>
             ))}
           </ul>
 
+          <SlideIn delay={BASE_DURATION + 0.1 * pageLinks.length}>
+            <LanguageSwitcher />
+          </SlideIn>
+
           <div className="nav__theme-btn">
-            <SlideIn delay={BASE_DURATION + 0.1 * pageLinks.length}>
+            <SlideIn delay={BASE_DURATION + 0.1 * (pageLinks.length + 1)}>
               <ThemeSwitcher />
             </SlideIn>
           </div>
@@ -90,7 +97,7 @@ const Navbar: React.FC = () => {
                           : `${(pageLinks.length - 1 - index) * 200}ms`,
                       }}
                     >
-                      {link.content}
+                      {t(`links.${link.content}`)}
                     </NavLink>
                   </li>
                 ))}
