@@ -2,8 +2,8 @@
 @use "./variables" as *;
 
 @font-face {
-  font-family: "Luckiest-Guy";
-  src: url("../assets/fonts/LuckiestGuy.ttf") format("truetype");
+  font-family: "Funtastic-Regular";
+  src: url("../assets/fonts/Funtastic-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,7 +17,7 @@
 
 :root {
   --regular-font: "Roboto", sans-serif;
-  --playful-font: "Luckiest-Guy", cursive;
+  --playful-font: "Funtastic-Regular", cursive;
 }
 
 html {

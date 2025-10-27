@@ -1,0 +1,18 @@
+{
+  "theMet": {
+    "name": "The MET",
+    "slogan": "Timeless Art, Endless Discovery"
+  },
+  "astroBlaster": {
+    "name": "Astro Blaster",
+    "slogan": "Classic Chaos, Cosmic Combat"
+  },
+  "tccEscape": {
+    "name": "TCC Escape Game",
+    "slogan": "When TCC gets too real — dodge it"
+  },
+  "_2048": {
+    "name": "2048",
+    "slogan": "Think Fast, Merge Smarter"
+  }
+}

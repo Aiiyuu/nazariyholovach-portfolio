@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 import "./ProjectCard.scss";
-import { ProjectCardInterface } from "../../../types/ProjectCardInterface";
+import { ProjectCard as ProjectCardInterface } from "../../sections/ShortProjectList/types";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SlideIn from "../../animations/SlideIn";
 import Button from "../Button";
 import clsx from "clsx";
 import StaggeredWords from "../../animations/StaggeredWords";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   project: ProjectCardInterface;
@@ -13,7 +14,7 @@ type Props = {
 };
 
 const ProjectCard: React.FC<Props> = ({ project, zIndex }) => {
-  const { thumbnail, name, slogan, overlay, stack, demoLink } = project;
+  const { id, thumbnail, overlay, stack, demoLink } = project;
   const cardRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -23,6 +24,8 @@ const ProjectCard: React.FC<Props> = ({ project, zIndex }) => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 1000]);
   const opacity = useTransform(scrollYProgress, [0.3, 1], [1, 0]);
+
+  const { t } = useTranslation(["projects", "common"]);
 
   return (
     <motion.div
@@ -34,7 +37,7 @@ const ProjectCard: React.FC<Props> = ({ project, zIndex }) => {
         loading="lazy"
         className="project-card__img"
         src={thumbnail}
-        alt={name}
+        alt={t(`projects:${id}.name`)}
       />
 
       <div className="project-card__wrapper">
@@ -44,12 +47,14 @@ const ProjectCard: React.FC<Props> = ({ project, zIndex }) => {
           })}
         >
           <SlideIn delay={0.2}>
-            <h4 className="project-card__slogan">{slogan}</h4>
+            <h4 className="project-card__slogan">
+              {t(`projects:${id}.slogan`)}
+            </h4>
           </SlideIn>
 
           <h1 className="project-card__title">
             <StaggeredWords delay={0.3} rotate={0} y={50}>
-              {name}
+              {t(`projects:${id}.name`)}
             </StaggeredWords>
           </h1>
 
@@ -69,7 +74,7 @@ const ProjectCard: React.FC<Props> = ({ project, zIndex }) => {
         <div className="project-card__btn-group">
           <SlideIn delay={0.5 + 0.1 * stack.length}>
             <Button size="md" color="pink">
-              Explore
+              {t("common:exploreBtn")}
             </Button>
           </SlideIn>
 
@@ -77,7 +82,7 @@ const ProjectCard: React.FC<Props> = ({ project, zIndex }) => {
             <SlideIn delay={0.6 + 0.1 * stack.length}>
               <a href={demoLink} target="_blank">
                 <Button size="md" color="pink">
-                  Demo
+                  {t("common:demoBtn")}
                 </Button>
               </a>
             </SlideIn>

@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Skills.scss";
-import { waverList } from "../../../data/waver";
 import { motion, Variants } from "framer-motion";
 import StaggeredLines from "../../animations/StaggeredLines";
 import StaggeredWords from "../../animations/StaggeredWords";
-import { skillsList } from "../../../data/skills";
+import { skillsList } from "./data";
 import SkillCard from "../../ui/SkillCard";
+import { useTranslation } from "react-i18next";
+import clsx from "clsx";
 
 const waverBtnVariants: Variants = {
   hidden: {
@@ -41,28 +42,43 @@ const skillCardVariants: Variants = {
   },
 };
 
+const ROTATION_DURATION = 500;
+
 const Skills: React.FC = () => {
+  const { t, i18n } = useTranslation("waver");
+  const waverList = t("waverList", { returnObjects: true }) as string[];
   const [waverItem, setWaverItem] = useState(waverList[0]);
+  const [isRotating, setIsRotating] = useState(false);
+
+  useEffect(() => {
+    if (waverList && waverList.length > 0) {
+      setWaverItem(waverList[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language]);
 
   const handleWaverSwitching = () => {
-    const currentIndex = waverList.findIndex((item) => item === waverItem) + 1;
-    const currentItem =
-      currentIndex !== waverList.length
-        ? waverList[currentIndex]
-        : waverList[0];
+    if (isRotating || !waverList || waverList.length === 0) return;
 
-    setWaverItem(currentItem);
+    const currentIndex = waverList.findIndex((item) => item === waverItem);
+    const nextIndex = (currentIndex + 1) % waverList.length;
+    setWaverItem(waverList[nextIndex]);
+    setIsRotating(true);
+
+    setTimeout(() => setIsRotating(false), ROTATION_DURATION);
   };
 
   return (
     <div id="skills" className="skills">
       <h2 className="skills__title">
-        <StaggeredLines>You need</StaggeredLines>
+        <StaggeredLines>{t("title")}</StaggeredLines>
       </h2>
 
       <div className="skills__waver">
         <motion.button
-          className="skills__waver-btn"
+          className={clsx("skills__waver-btn", {
+            "skills__waver-btn--is-rotating": isRotating,
+          })}
           onClick={handleWaverSwitching}
           variants={waverBtnVariants}
           initial="hidden"
@@ -86,7 +102,7 @@ const Skills: React.FC = () => {
         </motion.button>
 
         <span className="skills__waver-item">
-          <StaggeredWords>{waverItem + "?"}</StaggeredWords>
+          <StaggeredWords key={waverItem}>{waverItem + "?"}</StaggeredWords>
         </span>
       </div>
 

@@ -4,3 +4,8 @@ declare module "*.svg?react" {
   const defaultExport: string;
   export default defaultExport;
 }
+
+declare module "*.svg" {
+  const content: string;
+  export default content;
+}

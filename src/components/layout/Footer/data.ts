@@ -1,66 +1,66 @@
-import { FooterItem } from "../types/FooterItemInterface";
-import { SocialNetwork } from "../types/SocialNetworkInterface";
-import Github from "../assets/icons/github.svg?react";
-import LinkedIn from "../assets/icons/linkedin.svg?react";
-import Telegram from "../assets/icons/telegram.svg?react";
-import Spotify from "../assets/icons/spotify.svg?react";
+import { FooterItem } from "./types";
+import { SocialNetwork } from "./types";
+import Github from "../../../assets/icons/github.svg?react";
+import LinkedIn from "../../../assets/icons/linkedin.svg?react";
+import Telegram from "../../../assets/icons/telegram.svg?react";
+import Spotify from "../../../assets/icons/spotify.svg?react";
 
 export const footerLists: FooterItem[][] = [
   [
     {
-      content: "Main works",
+      id: "footer.mainWorks",
       title: true,
     },
     {
-      content: "The MET",
+      id: "footer.theMet",
       demo: "https://aiiyuu.github.io/layout_landing-page/",
     },
     {
-      content: "Astro-blaster",
+      id: "footer.astroBlaster",
       demo: "https://aiiyuu.github.io/Astro-Blaster/",
     },
     {
-      content: "Tcc-Escape Game",
+      id: "footer.tccEscapeGame",
       demo: "https://aiiyuu.github.io/tcc-chase-game/",
     },
     {
-      content: "2048",
+      id: "footer.game2048",
       demo: "https://aiiyuu.github.io/js_2048_game/",
     },
   ],
   [
     {
-      content: "Other pages",
+      id: "footer.otherPages",
       title: true,
     },
     {
-      content: "Home",
+      id: "footer.home",
       page: "home",
     },
     {
-      content: "About me",
+      id: "footer.aboutMe",
       page: "about",
     },
     {
-      content: "Works",
+      id: "footer.works",
       page: "work",
     },
   ],
   [
     {
-      content: "Navigation",
+      id: "footer.navigation",
       title: true,
     },
     {
-      content: "Introduction",
+      id: "footer.introduction",
       navigate: "#introduction",
     },
     {
-      content: "Main projects",
+      id: "footer.mainProjects",
       navigate: "#main-projects",
     },
     {
-      content: "Skills",
+      id: "footer.skills",
       navigate: "#skills",
     },
   ],
