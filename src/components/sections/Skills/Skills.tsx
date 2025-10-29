@@ -3,10 +3,11 @@ import "./Skills.scss";
 import { motion, Variants } from "framer-motion";
 import StaggeredLines from "../../animations/StaggeredLines";
 import StaggeredWords from "../../animations/StaggeredWords";
-import { skillsList } from "./data";
-import SkillCard from "../../ui/SkillCard";
+import { skills } from "./data";
+import StackItemCard from "../../ui/StackItemCard";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
+import SlideIn from "../../animations/SlideIn";
 
 const waverBtnVariants: Variants = {
   hidden: {
@@ -26,26 +27,10 @@ const waverBtnVariants: Variants = {
   },
 };
 
-const skillCardVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    rotate: 10,
-  },
-  visible: {
-    opacity: 1,
-    rotate: 0,
-
-    transition: {
-      duration: 0.4,
-      delay: 0.2,
-    },
-  },
-};
-
 const ROTATION_DURATION = 500;
 
 const Skills: React.FC = () => {
-  const { t, i18n } = useTranslation("waver");
+  const { t, i18n } = useTranslation(["waver", "skills"]);
   const waverList = t("waverList", { returnObjects: true }) as string[];
   const [waverItem, setWaverItem] = useState(waverList[0]);
   const [isRotating, setIsRotating] = useState(false);
@@ -71,7 +56,7 @@ const Skills: React.FC = () => {
   return (
     <div id="skills" className="skills">
       <h2 className="skills__title">
-        <StaggeredLines>{t("title")}</StaggeredLines>
+        <StaggeredLines>{t("waver:title")}</StaggeredLines>
       </h2>
 
       <div className="skills__waver">
@@ -106,17 +91,25 @@ const Skills: React.FC = () => {
         </span>
       </div>
 
-      <div className="skills__list">
-        {skillsList.map((skill) => (
-          <motion.div
-            key={skill.id}
-            className="skills__item"
-            variants={skillCardVariants}
-            initial="hidden"
-            whileInView="visible"
-          >
-            <SkillCard skill={skill} />
-          </motion.div>
+      <div className="skills__categories-list">
+        {skills.map((category) => (
+          <SlideIn key={category.name} offset={100}>
+            <div className="skills__category-item">
+              <h2 className="skills__category-title">
+                {t(`skills:categories.${category.name}`)}
+              </h2>
+
+              <ul className="skills__stack-list">
+                {category.stack.map((item, index) => (
+                  <li key={item.name} className="skills__stack-item">
+                    <SlideIn offset={50} delay={0.1 * index}>
+                      <StackItemCard key={item.name} skill={item} />
+                    </SlideIn>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </SlideIn>
         ))}
       </div>
     </div>

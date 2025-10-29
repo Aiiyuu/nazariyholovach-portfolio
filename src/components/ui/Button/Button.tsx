@@ -2,14 +2,13 @@ import React, { ReactNode } from "react";
 import "./Button.scss";
 import { Variants, motion } from "framer-motion";
 import clsx from "clsx";
-
-type ButtonSize = "xs" | "sm" | "md" | "lg";
+import { ButtonSize } from "./types";
 
 type ButtonProps = {
   children: ReactNode;
   type?: "submit" | "reset" | "button";
   color?: string;
-  size?: ButtonSize; 
+  size?: ButtonSize;
 };
 
 const buttonVariants: Variants = {
