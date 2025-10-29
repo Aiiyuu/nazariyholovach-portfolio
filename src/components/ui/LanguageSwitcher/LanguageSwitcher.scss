@@ -24,6 +24,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--bg-color-lighter);
+    padding: map.get($spacing, "sm");
+    border-radius: map.get($radius, "md");
 
     img {
       height: 18px;
@@ -51,9 +54,11 @@
 
   &__list {
     position: absolute;
+    top: 5px;
+    
     display: flex;
     flex-direction: column;
-    gap: map.get($spacing, "sm");
+    gap: map.get($spacing, "md");
 
     background-color: var(--bg-color-lighter);
     border-radius: map.get($radius, "md");
