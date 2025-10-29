@@ -1,5 +1,12 @@
 {
-  "design": "UI & Mobile Adaptation",
-  "frontend": "Frontend Development",
-  "backend": "Backend Development"
+  "categories": {
+    "design": "Design",
+    "frontend": "Frontend Development",
+    "bonus": "Bonus"
+  },
+  "status": {
+    "expert": "Expert",
+    "experienced": "Experienced",
+    "ultra-expert": "Ultra Expert"
+  }
 }

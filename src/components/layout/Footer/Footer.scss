@@ -88,7 +88,7 @@
     &--bold {
       cursor: default;
       font-weight: 600;
-      font-size: map.get($font-sizes, "md");
+      font-size: map.get($font-sizes, "sm");
 
       &:hover {
         text-decoration: none;

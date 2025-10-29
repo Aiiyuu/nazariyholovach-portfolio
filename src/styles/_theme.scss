@@ -4,6 +4,8 @@
 :root {
   --text-color: #{map.get($colors, "dark")};
   --text-color-invert: #{map.get($colors, "light")};
+  --text-color-lighter: #{map.get($colors, "slightly-dark")};
+  --text-color-lighter-invert: #{map.get($colors, "white")};
   --text-grey-color: #{map.get($colors, "grey")};
 
   --bg-color: #{map.get($colors, "light")};
@@ -20,6 +22,8 @@
 [data-theme="dark"] {
   --text-color: #{map.get($colors, "light")};
   --text-color-invert: #{map.get($colors, "dark")};
+  --text-color-lighter: #{map.get($colors, "white")};
+  --text-color-lighter-invert: #{map.get($colors, "slightly-dark")};
   --text-grey-color: #{map.get($colors, "light-grey")};
 
   --bg-color: #{map.get($colors, "dark")};

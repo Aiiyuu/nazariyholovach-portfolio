@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     gap: map.get($spacing, "md");
+    margin-bottom: map.get($spacing, "2xl");
   }
 
   &__waver-btn {
@@ -69,28 +70,26 @@
     }
   }
 
-  &__list {
-    max-width: 100vw;
-    overflow: hidden;
-    margin-top: map.get($spacing, "4xl");
-
-    --cols: 1;
-
-    @include page-grid;
-    margin-inline: 0;
-    grid-template-columns: repeat(var(--cols), 1fr);
-    gap: map.get($spacing, "md");
-
-    @include on-tablet {
-      --cols: 2;
-    }
-
-    @include on-desktop {
-      --cols: 3;
-    }
+  &__category-title {
+    margin-bottom: map.get($spacing, "lg");
+    font-size: map.get($font-sizes, "lg");
   }
 
-  &__item {
-    transform-origin: bottom left;
+  &__categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spacing, "lg");
+  }
+
+  &__category-item {
+    background-color: var(--bg-color-lighter);
+    border-radius: map.get($radius, "3xl");
+    padding: map.get($spacing, "xl");
+  }
+
+  &__stack-list {
+    display: grid;
+    gap: map.get($spacing, "xl");
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }

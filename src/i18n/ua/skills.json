@@ -1,5 +1,12 @@
 {
-  "design": "UI & Мобільна адаптація",
-  "frontend": "Фронтенд-розробка",
-  "backend": "Бекенд-розробка"
+  "categories": {
+    "design": "Дизайн",
+    "frontend": "Фронтенд розробка",
+    "bonus": "Бонус"
+  },
+  "status": {
+    "expert": "Експерт",
+    "experienced": "Досвідчений",
+    "ultra-expert": "Ультра Експерт"
+  }
 }
