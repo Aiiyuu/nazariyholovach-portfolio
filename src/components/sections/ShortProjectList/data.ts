@@ -1,8 +1,8 @@
 import { ProjectCard } from "./types";
-import metThumbnail from "../../../assets/images/projects/the-MET.png";
-import _2048Thumbnail from "../../../assets/images/projects/2048.png";
-import astroBlasterThumbnail from "../../../assets/images/projects/astro-blaster.png";
-import tccEscapeThumbnail from "../../../assets/images/projects/TCC-Escape.png";
+import metThumbnail from "../../../assets/images/projects/the-MET.webp";
+import _2048Thumbnail from "../../../assets/images/projects/2048.webp";
+import astroBlasterThumbnail from "../../../assets/images/projects/astro-blaster.webp";
+import tccEscapeThumbnail from "../../../assets/images/projects/TCC-Escape.webp";
 
 export const shortProjectList: ProjectCard[] = [
   {
