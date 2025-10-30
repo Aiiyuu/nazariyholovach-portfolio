@@ -1,18 +1,7 @@
 {
-  "footer": {
-    "mainWorks": "Основні роботи",
-    "theMet": "The МЕТ",
-    "astroBlaster": "Astro-Blaster",
-    "tccEscapeGame": "Гра TCC-Escape",
-    "game2048": "2048",
-    "otherPages": "Інші сторінки",
-    "home": "Головна",
-    "aboutMe": "Про мене",
-    "works": "Роботи",
-    "navigation": "Навігація",
-    "introduction": "Вступ",
-    "mainProjects": "Основні проєкти",
-    "skills": "Навички",
-    "copyright": "© 2025 Назарій Головач — вільно для ознайомлення за ліцензією MIT"
-  }
+  "title": "В тебе є",
+  "title-main": "Класна ідея або проект?",
+  "text": "Давай створимо щось неймовірне разом",
+  "copyright": "MIT © 2025 Назарій Головач",
+  "legal-information": "Юридична інформація"
 }

@@ -45,7 +45,11 @@
   }
 
   &__brand {
-    margin-right: map.get($spacing, "xl");
+    margin-right: map.get($spacing, "md");
+
+    @include on-tablet {
+      margin-right: map.get($spacing, "xl");
+    }
   }
 
   &__list {

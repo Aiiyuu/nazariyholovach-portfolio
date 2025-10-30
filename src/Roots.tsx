@@ -4,15 +4,24 @@ import {
   BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import App from "./App";
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const Root = () => (
   <Router basename="/nazariyholovach-portfolio">
     <Routes>
       <Route path="/:lng" element={<App />}>
-        <Route index element={<HomePage />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <HomePage />
+            </Suspense>
+          }
+        />
         <Route path="home" element={<Navigate to="/" replace />} />
 
         <Route path="work" element={<p>work</p>} />
@@ -21,8 +30,15 @@ const Root = () => (
       </Route>
 
       <Route path="/" element={<Navigate to="/en" replace />} />
-      
-      <Route path="*" element={<NotFoundPage />} />
+
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <NotFoundPage />
+          </Suspense>
+        }
+      />
     </Routes>
   </Router>
 );

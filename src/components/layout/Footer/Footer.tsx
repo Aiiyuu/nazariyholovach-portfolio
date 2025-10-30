@@ -1,84 +1,79 @@
 import React from "react";
-import { footerLists, socialNetworks } from "./data";
 import "./Footer.scss";
-import clsx from "clsx";
-import SlideIn from "../../animations/SlideIn";
-import { motion, Variants } from "framer-motion";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import Button from "../../ui/Button";
+import SlideIn from "../../animations/SlideIn";
+import { socialNetworks } from "./data";
+import { motion, Variants } from "framer-motion";
 
-const SocialNetworkVariants: Variants = {
+const socialNetworkVariants: Variants = {
   hover: {
-    opacity: 0.8,
     scale: 1.1,
   },
   tap: {
-    opacity: 0.8,
     scale: 1.2,
   },
 };
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation("footer");
+  const { t } = useTranslation(["footer", "common"]);
+
   return (
     <footer className="footer">
-      <section className="footer__section">
-        <ul className="footer__social-networks">
-          {socialNetworks.map((item, index) => (
-            <motion.a
-              href={item.link}
+      <SlideIn offset={100}>
+        <section className="footer__contact">
+          <h2 className="footer__title">
+            <SlideIn delay={0.2}>{t("footer:title")}</SlideIn>
+            <SlideIn delay={0.3}>
+              <span className="footer__title-main">
+                {t("footer:title-main")}
+              </span>
+            </SlideIn>
+          </h2>
+
+          <SlideIn delay={0.4}>
+            <p className="footer__text">{t("footer:text")}</p>
+          </SlideIn>
+
+          <SlideIn delay={0.5}>
+            <Button color="pink" size="sm">
+              {t("common:contactMeBtn")}
+            </Button>
+          </SlideIn>
+        </section>
+      </SlideIn>
+
+      <section className="footer__bottom">
+        <ul className="footer__social-networks-list">
+          {socialNetworks.map((socialNetwork, index) => (
+            <motion.li
               key={index}
-              target="_blank"
               className="footer__social-networks-item"
-              variants={SocialNetworkVariants}
+              variants={socialNetworkVariants}
               whileHover="hover"
               whileTap="tap"
             >
-              <SlideIn offset={40} delay={0.1 * index}>
-                <item.icon />
+              <SlideIn delay={0.2 * index + 0.1}>
+                <a href={socialNetwork.link} target="_blank">
+                  <socialNetwork.icon></socialNetwork.icon>
+                </a>
               </SlideIn>
-            </motion.a>
+            </motion.li>
           ))}
         </ul>
-      </section>
 
-      <section className="footer__section">
-        <SlideIn offset={40} delay={0.1 * socialNetworks.length}>
-          <p className="footer__license">{t("footer.copyright")}</p>
-        </SlideIn>
-      </section>
-
-      <section className="footer__section">
-        {footerLists.map((list, index) => (
-          <ul key={index} className="footer__list">
-            {list.map((item, itemIndex) => (
-              <li
-                key={t(`footer.${item.id}`)}
-                className={clsx("footer__item", {
-                  "footer__item--bold": item.title,
-                })}
-              >
-                <SlideIn offset={40} delay={0.1 * itemIndex}>
-                  {item.title && <p>{t(`${item.id}`)}</p>}
-
-                  {item.demo && (
-                    <a href={item.demo} target="_blank">
-                      {t(`${item.id}`)}
-                    </a>
-                  )}
-
-                  {item.page && (
-                    <Link to={item.page}>{t(`${item.id}`)}</Link>
-                  )}
-
-                  {item.navigate && (
-                    <a href={item.navigate}>{t(`${item.id}`)}</a>
-                  )}
-                </SlideIn>
-              </li>
-            ))}
-          </ul>
-        ))}
+        <div className="footer__copyright-wrapper">
+          <SlideIn delay={0.2}>
+            <p className="footer__copyright-text">{t("footer:copyright")}</p>
+          </SlideIn>
+          
+          <SlideIn delay={0.4}>
+            <Link className="footer__copyright-btn" to="legal">
+              {t("footer:legal-information")}
+            </Link>
+          </SlideIn>
+        </div>
       </section>
     </footer>
   );

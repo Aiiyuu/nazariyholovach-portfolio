@@ -1,18 +1,7 @@
 {
-  "footer": {
-    "mainWorks": "Main works",
-    "theMet": "The MET",
-    "astroBlaster": "Astro-blaster",
-    "tccEscapeGame": "Tcc-Escape Game",
-    "game2048": "2048",
-    "otherPages": "Other pages",
-    "home": "Home",
-    "aboutMe": "About me",
-    "works": "Works",
-    "navigation": "Navigation",
-    "introduction": "Introduction",
-    "mainProjects": "Main projects",
-    "skills": "Skills",
-    "copyright": "© 2025 Nazariy Holovach — free to explore under MIT"
-  }
+  "title": "Do you have an",
+  "title-main": "Awesome idea or project?",
+  "text": "Let's create something brilliant together",
+  "copyright": "MIT © 2025 Nazariy Holovach",
+  "legal-information": "Legal information"
 }
