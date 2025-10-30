@@ -8,7 +8,7 @@
 
   display: inline-block;
   padding: map.get($spacing, "xs");
-  background-color: map.get($colors, "red");
+  background-color: map.get($colors, "pink");
   border-radius: map.get($radius, "md");
 
   width: var(--teddy-wrapper-size);
