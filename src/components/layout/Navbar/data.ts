@@ -3,14 +3,14 @@ import { PageLink } from "./types";
 export const pageLinks: PageLink[] = [
   {
     content: "work",
-    path: "/work",
+    path: "work",
   },
   {
     content: "about",
-    path: "/about",
+    path: "about",
   },
   {
     content: "contact",
-    path: "/contact",
+    path: "contact",
   },
 ];

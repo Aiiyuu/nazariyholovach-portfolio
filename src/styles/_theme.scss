@@ -12,7 +12,6 @@
   --bg-color-lighter: #{map.get($colors, "white")};
   --bg-color-lighter-invert: #{map.get($colors, "slightly-dark")};
   --bg-color-invert: #{map.get($colors, "dark")};
-  --bg-overlay: rgba(0, 0, 0, 0.915);
   --nav-overlay: rgba(245, 241, 235, 0.4);
 
   --img-color: filter: brightness(0) saturate(100%) invert(6%) sepia(18%) saturate(2654%) hue-rotate(209deg) brightness(93%) contrast(94%);
@@ -30,7 +29,6 @@
   --bg-color-invert: #{map.get($colors, "light")};
   --bg-color-lighter: #{map.get($colors, "slightly-dark")};
   --bg-color-lighter-invert: #{map.get($colors, "white")};
-  --bg-overlay: rgba(255, 255, 255, 0.915);
   --nav-overlay: rgba(22, 21, 40, 0.4);
 
   --img-color: brightness(0) saturate(100%) invert(100%) sepia(46%) saturate(748%) hue-rotate(325deg) brightness(114%) contrast(91%);

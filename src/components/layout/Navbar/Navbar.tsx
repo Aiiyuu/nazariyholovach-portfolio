@@ -10,11 +10,16 @@ import { Link, NavLink } from "react-router-dom";
 import { pageLinks } from "./data";
 import LanguageSwitcher from "../../ui/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
+import { Language } from "../../ui/LanguageSwitcher/types";
 
 const BASE_DURATION = 0.3;
 
-const Navbar: React.FC = () => {
-  const { t } = useTranslation('nav');
+type Props = {
+  lng: Language;
+};
+
+const Navbar: React.FC<Props> = ({ lng }) => {
+  const { t } = useTranslation("nav");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNavOpen = () => {
@@ -46,7 +51,7 @@ const Navbar: React.FC = () => {
               <SlideIn delay={BASE_DURATION + 0.1 * index} key={link.content}>
                 <li className="nav__item">
                   <NavLink
-                    to={link.path}
+                    to={`/${lng}/${link.path}`}
                     className={({ isActive }) =>
                       clsx("nav__link", { "nav__link--active": isActive })
                     }
@@ -85,7 +90,7 @@ const Navbar: React.FC = () => {
                 {pageLinks.map((link, index) => (
                   <li className="nav__adaptive-menu-item" key={link.content}>
                     <NavLink
-                      to={link.path}
+                      to={`/${lng}/${link.path}`}
                       className={({ isActive }) =>
                         clsx("nav__adaptive-menu-link", {
                           "nav__adaptive-menu-link--active": isActive,

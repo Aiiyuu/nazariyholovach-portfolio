@@ -1,46 +1,43 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/layout/Navbar";
-import Lenis from "@studio-freight/lenis";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import Footer from "./components/layout/Footer";
+import TransitionScreen, {
+  TRANSITION_SCREEN_DURATION,
+} from "./components/animations/TransitionScreen";
+import { useLanguage, useLenis } from "./hooks";
 import { Language } from "./components/ui/LanguageSwitcher/types";
-import { useTranslation } from "react-i18next";
 
 function App() {
-  const lenisRef = useRef<Lenis | null>(null);
+  const location = useLocation();
+  const [showTransition, setShowTransition] = useState(false);
+  const [currentPath, setCurrentPath] = useState(location.pathname);
 
   useEffect(() => {
-    lenisRef.current = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
+    if (location.pathname !== currentPath) {
+      setShowTransition(true);
 
-    function raf(time: number) {
-      lenisRef.current?.raf(time);
-      requestAnimationFrame(raf);
+      const timer = setTimeout(() => {
+        setCurrentPath(location.pathname);
+        setShowTransition(false);
+      }, TRANSITION_SCREEN_DURATION);
+
+      return () => clearTimeout(timer);
     }
+  }, [location, currentPath]);
 
-    requestAnimationFrame(raf);
+  useLanguage();
+  const { lng } = useParams();
 
-    return () => {
-      lenisRef.current?.destroy();
-    };
-  }, []);
-
-  const { lng } = useParams<{ lng: Language }>();
-  const { i18n } = useTranslation();
-
-  useEffect(() => {
-    if (lng && i18n.language !== lng) {
-      i18n.changeLanguage(lng);
-    }
-  }, [lng, i18n]);
+  useLenis();
 
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <Navbar lng={lng as Language} />
+      <Outlet context={{ lng }} />
       <Footer />
+
+      {showTransition && <TransitionScreen />}
     </>
   );
 }
