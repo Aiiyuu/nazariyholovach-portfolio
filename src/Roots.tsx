@@ -1,7 +1,7 @@
 import {
   Navigate,
   Route,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
 } from "react-router-dom";
 import { Suspense, lazy } from "react";
@@ -11,7 +11,7 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const Root = () => (
-  <Router basename="/nazariyholovach-portfolio">
+  <Router>
     <Routes>
       <Route path="/:lng" element={<App />}>
         <Route
@@ -27,6 +27,7 @@ const Root = () => (
         <Route path="work" element={<p>work</p>} />
         <Route path="about" element={<p>about</p>} />
         <Route path="contact" element={<p>contact</p>} />
+        <Route path="legal" element={<p>legal information</p>} />
       </Route>
 
       <Route path="/" element={<Navigate to="/en" replace />} />
