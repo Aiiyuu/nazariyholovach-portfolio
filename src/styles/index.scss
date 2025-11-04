@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "./variables" as *;
+@use "./mixins" as *;
 @use "./reset";
 @use "./typography";
 @use "./theme";
@@ -16,4 +17,14 @@ body {
 
 a {
   color: var(--text-color);
+}
+
+.main-wrapper {
+  max-width: $max-container-width;
+  margin-inline: auto;
+  padding-inline: map.get($spacing, "md");
+
+  @include on-tablet {
+    padding-inline: map.get($spacing, "xl");
+  }
 }

@@ -4,9 +4,7 @@
 
 .welcome {
   text-align: center;
-  max-width: $max-container-width;
   min-height: 100vh;
-  margin-inline: auto;
 
   @include page-grid;
 

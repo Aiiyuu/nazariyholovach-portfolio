@@ -33,15 +33,8 @@
     align-items: center;
     justify-content: flex-start;
 
-    max-width: $max-container-width;
     width: 100%;
-    margin-inline: auto;
-
-    padding: map.get($spacing, "sm") map.get($spacing, "md");
-
-    @include on-tablet {
-      padding: map.get($spacing, "sm") map.get($spacing, "xl");
-    }
+    padding: map.get($spacing, "sm") 0;
   }
 
   &__brand {

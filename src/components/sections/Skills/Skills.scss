@@ -3,13 +3,10 @@
 @use "../../../styles/mixins" as *;
 
 .skills {
-  max-width: $max-container-width;
-  margin-inline: auto;
   margin-top: map.get($spacing, "5xl");
-  padding: map.get($spacing, "sm") map.get($spacing, "md");
+  padding: map.get($spacing, "sm") 0;
 
   @include on-tablet {
-    padding: map.get($spacing, "sm") map.get($spacing, "xl");
     margin-top: map.get($spacing, "6xl");
   }
 

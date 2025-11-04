@@ -4,13 +4,9 @@
 
 .short-project {
   overflow: hidden;
-  max-width: $max-container-width;
-  margin-inline: auto;
   margin-top: map.get($spacing, "5xl");
-  padding-inline: map.get($spacing, "md");
 
   @include on-tablet {
-    padding-inline: map.get($spacing, "xl");
     margin-top: 0;
   }
 

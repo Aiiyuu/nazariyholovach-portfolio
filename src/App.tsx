@@ -33,9 +33,13 @@ function App() {
 
   return (
     <>
-      <Navbar lng={lng as Language} />
-      <Outlet context={{ lng }} />
-      <Footer />
+      <main className="main-wrapper">
+        <Navbar lng={lng as Language} />
+
+        <Outlet context={{ lng }} />
+
+        <Footer />
+      </main>
 
       {showTransition && <TransitionScreen />}
     </>
