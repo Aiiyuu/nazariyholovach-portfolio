@@ -1,42 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./TransitionScreen.scss";
-import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
-import { useLocation } from "react-router-dom";
-import StaggeredWords from "../StaggeredWords";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import StaggeredWords from "@/components/animations/StaggeredWords";
+import { DELAY, DURATION, transition, titleVariants } from "./anims";
 
-const DELAY = 300;
-const DURATION = 750;
 const CURVE = 400;
-const DEFAULT_LOCATION = "home";
 
-export const SECOND_PHASE_DELAY = 2000;
+export const SECOND_PHASE_DELAY = 4000;
 export const TRANSITION_SCREEN_DURATION = DURATION + SECOND_PHASE_DELAY;
 
-const transition: Transition = {
-  delay: DELAY / 1000,
-  duration: DURATION / 1000,
-  ease: [0.86, 0, 0.14, 1],
+type Props = {
+  title: string;
 };
 
-const titleVariants: Variants = {
-  initial: { opacity: 1, x: 0 },
-  exit: {
-    y: -40,
-    opacity: 0,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
-
-const TransitionScreen: React.FC = () => {
+const TransitionScreen: React.FC<Props> = ({ title }) => {
   const width = window.innerWidth;
   const height = window.innerHeight;
   const [show, setShow] = useState(true);
-
-  const location = useLocation();
-  const title =
-    location.pathname.slice(1).split("/").at(-1) || DEFAULT_LOCATION;
 
   const initialPath = `
     M0 ${CURVE}
@@ -63,7 +43,10 @@ const TransitionScreen: React.FC = () => {
   const pathVariants: Variants = {
     initial: { d: initialPath },
     animate: { d: initialPath, transition },
-    exit: { d: exitPath, transition: { ...transition, duration: DURATION / 1000 } },
+    exit: {
+      d: exitPath,
+      transition: { ...transition, duration: DURATION / 1000 },
+    },
   };
 
   useEffect(() => {

@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.no-projects {
+  font-size: map.get($font-sizes, "xs");
+  text-align: center;
+
+  @include on-tablet {
+    font-size: map.get($font-sizes, "sm");
+  }
+}

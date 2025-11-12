@@ -10,7 +10,7 @@
   &--collapsed {
     .lng-switcher__arrow {
       svg {
-        transform: rotate(-180deg);
+        transform: scaleY(-1);
       }
     }
 
@@ -34,6 +34,10 @@
   }
 
   &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     svg {
       transition: transform $base-transition ease;
       width: 12px;

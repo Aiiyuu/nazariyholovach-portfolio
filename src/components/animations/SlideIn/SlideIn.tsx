@@ -45,8 +45,7 @@ const SlideIn: React.FC<SlideInProps> = ({
   return (
     <motion.div
       initial={getInitial()}
-      whileInView={{ x: 0, y: 0, opacity: 1, scale: 1 }}
-      transition={transition}
+      whileInView={{ x: 0, y: 0, opacity: 1, scale: 1, transition }}
       {...motionProps}
     >
       {children}

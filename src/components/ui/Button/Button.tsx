@@ -1,49 +1,35 @@
 import React, { ReactNode } from "react";
 import "./Button.scss";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import clsx from "clsx";
 import { ButtonSize } from "./types";
+import { buttonVariants } from "./anims";
 
 type ButtonProps = {
   children: ReactNode;
   type?: "submit" | "reset" | "button";
   color?: string;
   size?: ButtonSize;
-};
-
-const buttonVariants: Variants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-  },
-  hover: {
-    y: -6,
-  },
-  tap: {
-    scale: 1.05,
-  },
+  withMotion?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = ({
   children,
   type = "button",
-  color,
+  color = "theme",
   size = "lg",
+  withMotion = true,
 }) => {
+  const props = withMotion ? { whileHover: "hover", whileTap: "tap" } : {};
+
   return (
     <motion.button
-      className={clsx("btn", {
-        [`btn--${color}`]: color,
-        [`btn--${size}`]: size,
-      })}
+      className={clsx(`btn btn--${color} btn--${size}`)}
       type={type}
       variants={buttonVariants}
       initial="hidden"
       whileInView="visible"
-      whileHover="hover"
-      whileTap="tap"
+      {...props}
     >
       {children}
     </motion.button>

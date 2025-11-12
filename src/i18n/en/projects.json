@@ -14,5 +14,34 @@
   "_2048": {
     "name": "2048",
     "slogan": "Think Fast, Merge Smarter"
+  },
+  "todoApp": {
+    "name": "Todo App",
+    "slogan": "Stay organized. Get things done"
+  },
+
+  "categoryTitle": "Category",
+  "tagsTitle": "Tags",
+  "noProjects": "No works have been added yet",
+  "noMatchingProjects": "No works match your current filters",
+
+  "tags": {
+    "all": "All",
+    "art": "Art",
+    "museum": "Museum",
+    "space": "Space",
+    "adventure": "Adventure",
+    "race": "Race",
+    "logic": "Logic",
+    "puzzle": "Puzzle",
+    "office": "Office",
+    "career": "Career"
+  },
+
+  "categories": {
+    "all": "All",
+    "video_games": "Video Games",
+    "art": "Art",
+    "work_school": "Work & School"
   }
 }

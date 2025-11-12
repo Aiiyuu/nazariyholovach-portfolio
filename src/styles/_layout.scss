@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.container {
+  max-width: $max-container-width;
+  margin-inline: auto;
+  padding-inline: map.get($spacing, "md");
+
+  @include on-tablet {
+    padding-inline: map.get($spacing, "xl");
+  }
+}

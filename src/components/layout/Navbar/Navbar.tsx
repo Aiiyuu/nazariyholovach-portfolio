@@ -1,24 +1,22 @@
 import React from "react";
 import "./Navbar.scss";
-import TeddyBear from "../../ui/TeddyBear";
-import ThemeSwitcher from "../../ui/ThemeSwitcher";
+import TeddyBear from "@/components/ui/TeddyBear";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import { useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import SlideIn from "../../animations/SlideIn";
+import SlideIn from "@/components/animations/SlideIn";
 import { Link, NavLink } from "react-router-dom";
 import { pageLinks } from "./data";
-import LanguageSwitcher from "../../ui/LanguageSwitcher";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-import { Language } from "../../ui/LanguageSwitcher/types";
+import { adaptiveMenuBtnVariatns, closeAdaptiveMenuBtnVariatns } from "./anims";
+import { useLanguageContext } from "@/hooks";
 
 const BASE_DURATION = 0.3;
 
-type Props = {
-  lng: Language;
-};
-
-const Navbar: React.FC<Props> = ({ lng }) => {
+const Navbar: React.FC = () => {
+  const { lng } = useLanguageContext();
   const { t } = useTranslation("nav");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -41,7 +39,7 @@ const Navbar: React.FC<Props> = ({ lng }) => {
       >
         <div className="nav__wrapper">
           <SlideIn>
-            <Link to="/" className="nav__brand">
+            <Link to={`/${lng}`} className="nav__brand">
               <TeddyBear />
             </Link>
           </SlideIn>
@@ -76,8 +74,9 @@ const Navbar: React.FC<Props> = ({ lng }) => {
           <motion.button
             className="nav__adaptive-menu-btn"
             onClick={handleNavOpen}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 1.2 }}
+            variants={adaptiveMenuBtnVariatns}
+            whileHover="hover"
+            whileTap="tap"
           >
             <span></span>
             <span></span>
@@ -111,8 +110,9 @@ const Navbar: React.FC<Props> = ({ lng }) => {
               <motion.button
                 className="nav__adaptive-menu-close-btn"
                 onClick={handleNavClose}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 1.2 }}
+                variants={closeAdaptiveMenuBtnVariatns}
+                whileHover="hover"
+                whileTap="tap"
               >
                 <div className="nav__adaptive-menu-close-btn-wrapper"></div>
               </motion.button>

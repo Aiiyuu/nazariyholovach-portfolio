@@ -1,9 +1,9 @@
 import { FooterItem } from "./types";
 import { SocialNetwork } from "./types";
-import Github from "../../../assets/icons/github.svg?react";
-import LinkedIn from "../../../assets/icons/linkedin.svg?react";
-import Telegram from "../../../assets/icons/telegram.svg?react";
-import Spotify from "../../../assets/icons/spotify.svg?react";
+import Github from "@/assets/icons/github.svg?react";
+import LinkedIn from "@/assets/icons/linkedin.svg?react";
+import Telegram from "@/assets/icons/telegram.svg?react";
+import Spotify from "@/assets/icons/spotify.svg?react";
 
 export const footerLists: FooterItem[][] = [
   [

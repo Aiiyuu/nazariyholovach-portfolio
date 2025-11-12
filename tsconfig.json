@@ -9,9 +9,13 @@
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": [
     "src/**/*",
-    "src/svg.d.ts",
-  ],
+    "src/svg.d.ts"
+  ]
 }

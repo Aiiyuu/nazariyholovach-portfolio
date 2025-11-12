@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.work {
+  &__list {
+    --cols: 1;
+
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: map.get($spacing, "xl");
+
+    @include on-wide-tablet {
+      --cols: 2;
+    }
+  }
+}

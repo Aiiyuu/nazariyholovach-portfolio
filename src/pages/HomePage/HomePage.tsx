@@ -1,7 +1,7 @@
 import React from "react";
-import Welcome from "../../components/sections/Welcome";
-import ShortProjectList from "../../components/sections/ShortProjectList";
-import Skills from "../../components/sections/Skills";
+import Welcome from "@/components/home/Welcome";
+import ShortProjectList from "@/components/home/ShortProjectList";
+import Skills from "@/components/home/Skills";
 
 const HomePage: React.FC = () => {
   return (

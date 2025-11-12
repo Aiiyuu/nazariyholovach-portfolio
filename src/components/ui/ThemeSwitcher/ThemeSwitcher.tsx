@@ -1,9 +1,10 @@
 import React from "react";
 import "./ThemeSwitcher.scss";
-import moonIcon from "../../../assets/icons/moon.svg";
-import sunIcon from "../../../assets/icons/sun.svg";
+import moonIcon from "@/assets/icons/moon.svg";
+import sunIcon from "@/assets/icons/sun.svg";
 import { useEffect, useState } from "react";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { themeSwitcherVariants } from "./anims";
 
 const ThemeSwitcher: React.FC = () => {
   const [isDark, setIsDark] = useState<boolean>(() => {
@@ -26,8 +27,9 @@ const ThemeSwitcher: React.FC = () => {
     <motion.button
       className="theme-switcher"
       onClick={toggleTheme}
-      whileHover={{ scale: 1.075 }}
-      whileTap={{ scale: 1.2 }}
+      variants={themeSwitcherVariants}
+      whileHover="hover"
+      whileTap="tap"
     >
       <img src={moonIcon} alt="moon" />
       <img src={sunIcon} alt="sun" />

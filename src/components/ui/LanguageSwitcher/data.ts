@@ -1,15 +1,15 @@
-import ukFlag from "../../../assets/icons/United-Kingdom.svg";
-import uaFlag from "../../../assets/icons/Ukraine.svg";
-import { LanguageItem } from "./types";
+import ukFlag from "@/assets/icons/United-Kingdom.svg";
+import uaFlag from "@/assets/icons/Ukraine.svg";
+import { Language, LanguageItem } from "./types";
 
 export const languages: LanguageItem[] = [
   {
-    value: "en",
+    value: Language.EN,
     name: "English",
     flag: ukFlag,
   },
   {
-    value: "ua",
+    value: Language.UA,
     name: "Українська",
     flag: uaFlag,
   },

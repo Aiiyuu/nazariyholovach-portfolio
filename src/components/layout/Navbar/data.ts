@@ -2,8 +2,8 @@ import { PageLink } from "./types";
 
 export const pageLinks: PageLink[] = [
   {
-    content: "work",
-    path: "work",
+    content: "works",
+    path: "works",
   },
   {
     content: "about",

@@ -7,17 +7,11 @@
   overflow: hidden;
 
   text-transform: uppercase;
-  background-color: var(--bg-color-invert);
-  color: var(--text-color-invert);
   font-family: var(--playful-font);
   white-space: nowrap;
 
   transition: background-color $theme-transition ease,
     color $theme-transition ease;
-
-  &:hover {
-    background-color: var(--bg-color-lighter-invert);
-  }
 
   &--lg {
     font-size: map.get($font-sizes, "md");
@@ -43,6 +37,15 @@
     border-radius: map.get($radius, "md");
   }
 
+  &--theme {
+    background-color: var(--bg-color-invert);
+    color: var(--text-color-invert);
+
+    &:hover {
+      background-color: var(--bg-color-lighter-invert);
+    }
+  }
+
   &--pink {
     background-color: map.get($colors, "pink");
     color: map.get($colors, "light");
@@ -50,5 +53,28 @@
     &:hover {
       background-color: modify-color(map.get($colors, "pink"), "lighten", 20%);
     }
+  }
+
+  &--dark {
+    background-color: map.get($colors, "dark");
+    color: map.get($colors, "light");
+
+    &:hover {
+      background-color: modify-color(map.get($colors, "dark"), "lighten", 20%);
+    }
+  }
+
+  &--light {
+    background-color: map.get($colors, "light");
+    color: map.get($colors, "dark");
+
+    &:hover {
+      background-color: modify-color(map.get($colors, "light"), "darken", 20%);
+    }
+  }
+
+  &--theme-light {
+    background-color: var(--bg-color-lighter);
+    color: var(--text-color-lighter);
   }
 }

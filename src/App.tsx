@@ -1,47 +1,33 @@
-import { useEffect, useState } from "react";
 import Navbar from "./components/layout/Navbar";
-import { Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "./components/layout/Footer";
-import TransitionScreen, {
-  TRANSITION_SCREEN_DURATION,
-} from "./components/animations/TransitionScreen";
-import { useLanguage, useLenis } from "./hooks";
-import { Language } from "./components/ui/LanguageSwitcher/types";
+import TransitionScreen from "./components/animations/TransitionScreen";
+import { useLanguage, useLenis, usePageTransition } from "./hooks";
+import { SECOND_PHASE_DELAY } from "./components/animations/TransitionScreen";
+import { LanguageProvider } from "./context";
 
 function App() {
-  const location = useLocation();
-  const [showTransition, setShowTransition] = useState(false);
-  const [currentPath, setCurrentPath] = useState(location.pathname);
-
-  useEffect(() => {
-    if (location.pathname !== currentPath) {
-      setShowTransition(true);
-
-      const timer = setTimeout(() => {
-        setCurrentPath(location.pathname);
-        setShowTransition(false);
-      }, TRANSITION_SCREEN_DURATION);
-
-      return () => clearTimeout(timer);
-    }
-  }, [location, currentPath]);
+  const { showTransition, title } = usePageTransition();
 
   useLanguage();
-  const { lng } = useParams();
-
+  useLenis();
   useLenis();
 
   return (
     <>
-      <main className="main-wrapper">
-        <Navbar lng={lng as Language} />
+      <LanguageProvider>
+        <Navbar />
 
-        <Outlet context={{ lng }} />
+        <main className="main-wrapper">
+          {`${SECOND_PHASE_DELAY}`}
+
+          <Outlet />
+        </main>
 
         <Footer />
-      </main>
 
-      {showTransition && <TransitionScreen />}
+        {showTransition && <TransitionScreen title={title} />}
+      </LanguageProvider>
     </>
   );
 }

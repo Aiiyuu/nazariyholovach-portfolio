@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "../../../styles/mixins" as *;
 @use "../../../styles/variables" as *;
+@use "../../../styles/layout";
 
 .nav {
   position: sticky;
@@ -8,10 +9,10 @@
   z-index: 10;
   margin-top: map.get($spacing, "md");
 
-  width: 100vw;
-
   display: flex;
   align-items: center;
+
+  @extend .container;
 
   &::before {
     content: "";
@@ -54,16 +55,17 @@
     }
   }
 
-  &__item {
+  &__link {
     position: relative;
+    text-transform: capitalize;
   }
 
-  &__item::before {
+  &__link::before {
     content: "";
 
     position: absolute;
     bottom: 0;
-    transform: translateY(10px);
+    transform: translateY(7px);
     height: 2px;
     width: 0;
 
@@ -73,25 +75,18 @@
       right $base-transition ease;
   }
 
-  &__item:hover::before {
-    width: 100%;
+  &__link--active::before,
+  &__adaptive-menu-link--active::before,
+  &__link:hover::before {
+    width: 100% !important;
     left: 0;
     right: auto;
   }
 
-  &__item:not(:hover)::before {
+  &__link:not(:hover)::before {
     width: 0;
     right: 0;
     left: auto;
-  }
-
-  &__link {
-    text-transform: capitalize;
-  }
-
-  &__link--active,
-  &__adaptive-menu-link--active {
-    text-decoration: line-through;
   }
 
   &__theme-btn {

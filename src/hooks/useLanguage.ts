@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Language } from "../components/ui/LanguageSwitcher/types";
+import { Language } from "@/components/ui/LanguageSwitcher/types";
 
 export const useLanguage = () => {
   const { lng } = useParams<{ lng: Language }>();

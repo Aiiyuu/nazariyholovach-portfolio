@@ -1,9 +1,11 @@
 @use "sass:map";
 @use "../../../styles/variables" as *;
 @use "../../../styles/mixins" as *;
+@use "../../../styles/layout";
 
 .footer {
   margin-top: map.get($spacing, "3xl");
+  @extend .container;
 
   &__contact {
     background-color: var(--bg-color-invert);

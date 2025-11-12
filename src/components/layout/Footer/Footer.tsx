@@ -2,19 +2,11 @@ import React from "react";
 import "./Footer.scss";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import Button from "../../ui/Button";
-import SlideIn from "../../animations/SlideIn";
+import Button from "@/components/ui/Button";
+import SlideIn from "@/components/animations/SlideIn";
 import { socialNetworks } from "./data";
-import { motion, Variants } from "framer-motion";
-
-const socialNetworkVariants: Variants = {
-  hover: {
-    scale: 1.1,
-  },
-  tap: {
-    scale: 1.2,
-  },
-};
+import { motion } from "framer-motion";
+import { socialNetworkVariants } from "./anims";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation(["footer", "common"]);
@@ -54,7 +46,7 @@ const Footer: React.FC = () => {
               whileHover="hover"
               whileTap="tap"
             >
-              <SlideIn delay={0.2 * index + 0.1}>
+              <SlideIn delay={0.1 * index}>
                 <a href={socialNetwork.link} target="_blank">
                   <socialNetwork.icon></socialNetwork.icon>
                 </a>
@@ -64,11 +56,11 @@ const Footer: React.FC = () => {
         </ul>
 
         <div className="footer__copyright-wrapper">
-          <SlideIn delay={0.2}>
+          <SlideIn delay={0.1}>
             <p className="footer__copyright-text">{t("footer:copyright")}</p>
           </SlideIn>
-          
-          <SlideIn delay={0.4}>
+
+          <SlideIn delay={0.2}>
             <Link className="footer__copyright-btn" to="legal">
               {t("footer:legal-information")}
             </Link>

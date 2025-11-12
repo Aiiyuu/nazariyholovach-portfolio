@@ -1,0 +1,106 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+
+.dropdown {
+  position: relative;
+
+  &__btn {
+    display: inline-block;
+
+    &--collapsed > * {
+      box-shadow: inset 0 0 0 1px var(--bg-color-invert);
+
+      .arrow-icon {
+        transform: scaleY(-1);
+      }
+    }
+
+    & > * {
+      display: inline-flex;
+      align-items: center;
+      gap: map.get($spacing, "sm");
+
+      font-size: map.get($font-sizes, "xs");
+      text-transform: capitalize;
+      font-weight: 100;
+      font-family: var(--regular-font);
+
+      span {
+        font-weight: 900;
+      }
+
+      .arrow-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 15px;
+        height: 15px;
+
+        transition: transform $base-transition ease;
+
+        svg {
+          transition: fill $theme-transition ease;
+          fill: var(--bg-color-invert);
+        }
+      }
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    overflow: hidden;
+    height: 0;
+    z-index: 1;
+    top: calc(100% + map.get($spacing, "sm"));
+    left: 0;
+    transition: height $base-transition ease;
+  }
+
+  &__list {
+    border-radius: map.get($radius, "lg");
+    background-color: var(--bg-color-lighter);
+
+    padding: map.get($spacing, "md");
+    display: grid;
+    column-gap: map.get($spacing, "lg");
+    row-gap: map.get($spacing, "md");
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &__option {
+    position: relative;
+    font-weight: 100;
+    font-size: map.get($font-sizes, "xs");
+    text-transform: capitalize;
+  }
+
+  &__option::after {
+    content: "";
+
+    position: absolute;
+    top: calc(100% + map.get($spacing, "xs"));
+    left: 0;
+    height: 1px;
+    width: 0;
+
+    background-color: var(--text-color-lighter);
+
+    transition: width $base-transition ease;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    &:hover,
+    &--selected {
+      .dropdown__option {
+        font-weight: bold;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
