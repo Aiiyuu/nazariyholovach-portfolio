@@ -2,4 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run update-imports
+npm run format
 npm run lint

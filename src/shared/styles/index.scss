@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "variables" as *;
+@use "mixins" as *;
+@use "reset";
+@use "typography";
+@use "theme";
+@use "layout";
+
+* {
+  transition:
+    background-color $theme-transition ease,
+    color $theme-transition ease;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+a {
+  color: var(--text-color);
+}
+
+.main-wrapper {
+  @extend .container;
+}

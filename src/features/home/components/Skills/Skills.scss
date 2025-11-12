@@ -1,0 +1,92 @@
+@use "sass:map";
+@use "../../../../shared/styles/variables" as *;
+@use "../../../../shared/styles/mixins" as *;
+
+.skills {
+  margin-top: map.get($spacing, "5xl");
+  padding: map.get($spacing, "sm") 0;
+
+  @include on-tablet {
+    margin-top: map.get($spacing, "6xl");
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: map.get($font-sizes, "md");
+    font-weight: normal;
+    margin-bottom: map.get($spacing, "sm");
+
+    @include on-tablet {
+      font-size: map.get($font-sizes, "lg");
+    }
+  }
+
+  &__waver {
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, "md");
+    margin-bottom: map.get($spacing, "2xl");
+  }
+
+  &__waver-btn {
+    cursor: pointer;
+    min-width: 35px;
+    min-height: 35px;
+    width: 35px;
+    height: 35px;
+
+    &--is-rotating {
+      transition: all $base-transition ease;
+      rotate: 360deg;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      #exchange-bg {
+        fill: var(--bg-color-invert);
+        transition: fill $theme-transition ease;
+      }
+
+      #arrow-1,
+      #arrow-2 {
+        fill: var(--bg-color);
+        transition: fill $theme-transition ease;
+      }
+    }
+  }
+
+  &__waver-item {
+    text-transform: uppercase;
+    font-size: map.get($font-sizes, "lg");
+    font-family: var(--playful-font);
+
+    @include on-tablet {
+      font-size: map.get($font-sizes, "2xl");
+    }
+  }
+
+  &__category-title {
+    margin-bottom: map.get($spacing, "lg");
+    font-size: map.get($font-sizes, "lg");
+  }
+
+  &__categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spacing, "lg");
+  }
+
+  &__category-item {
+    background-color: var(--bg-color-lighter);
+    border-radius: map.get($radius, "3xl");
+    padding: map.get($spacing, "xl");
+  }
+
+  &__stack-list {
+    display: grid;
+    gap: map.get($spacing, "xl");
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}

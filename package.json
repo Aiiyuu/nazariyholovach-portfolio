@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "prepare": "husky install",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "vite build && gh-pages -d dist",
-    "update-imports": "node scripts/update-imports.js",
-    "prepare": "husky install"
+    "update-imports": "tsx scripts/update-imports.ts",
+    "format": "tsx scripts/format.ts",
+    "build": "npm run update-imports && npm run format && tsc -b && vite build",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
@@ -39,8 +40,10 @@
     "globals": "^16.4.0",
     "husky": "^9.1.7",
     "i18next": "^25.6.0",
+    "prettier": "^3.6.2",
     "react-i18next": "^16.2.0",
     "ts-morph": "^27.0.2",
+    "tsx": "^4.20.6",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.1",
     "vite": "^7.1.7",

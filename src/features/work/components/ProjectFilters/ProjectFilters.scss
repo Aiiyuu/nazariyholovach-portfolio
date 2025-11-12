@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "../../../../shared/styles/variables" as *;
+@use "../../../../shared/styles/mixins" as *;
+
+.project-filter {
+  display: flex;
+  justify-content: space-between;
+  gap: map.get($spacing, "md");
+  flex-direction: column;
+  align-items: start;
+
+  @include on-tablet {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  margin: map.get($spacing, "lg") 0;
+
+  &__dropdown-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: map.get($spacing, "md");
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      margin-right: map.get($spacing, "md");
+    }
+  }
+}

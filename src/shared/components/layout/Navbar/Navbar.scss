@@ -1,0 +1,290 @@
+@use "sass:map";
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+@use "../../../styles/layout";
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-top: map.get($spacing, "md");
+
+  display: flex;
+  align-items: center;
+
+  @extend .container;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: var(--nav-overlay);
+    backdrop-filter: blur(20px);
+    transition: background-color calc($theme-transition) ease;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    padding: map.get($spacing, "sm") 0;
+  }
+
+  &__brand {
+    margin-right: map.get($spacing, "md");
+
+    @include on-tablet {
+      margin-right: map.get($spacing, "xl");
+    }
+  }
+
+  &__list {
+    display: none;
+    gap: 50px;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__link {
+    position: relative;
+    text-transform: capitalize;
+  }
+
+  &__link::before {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    transform: translateY(7px);
+    height: 2px;
+    width: 0;
+
+    background-color: var(--bg-color-invert);
+
+    transition:
+      width $base-transition ease,
+      left $base-transition ease,
+      right $base-transition ease;
+  }
+
+  &__link--active::before,
+  &__adaptive-menu-link--active::before,
+  &__link:hover::before {
+    width: 100% !important;
+    left: 0;
+    right: auto;
+  }
+
+  &__link:not(:hover)::before {
+    width: 0;
+    right: 0;
+    left: auto;
+  }
+
+  &__theme-btn {
+    margin-left: auto;
+  }
+
+  &__adaptive-menu-btn {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+
+    width: 25px;
+    height: 25px;
+    margin-left: map.get($spacing, "md");
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__adaptive-menu-btn span {
+    width: 0;
+    height: 2px;
+    background-color: var(--bg-color-invert);
+    transition: width $base-transition ease;
+  }
+
+  &--closed .nav__adaptive-menu-btn {
+    span:nth-child(1) {
+      animation: nav-lines $base-transition ease forwards 900ms;
+    }
+    span:nth-child(2) {
+      animation: nav-lines $base-transition ease forwards 800ms;
+    }
+    span:nth-child(3) {
+      animation: nav-lines $base-transition ease forwards 700ms;
+    }
+  }
+
+  &__adaptive-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-transform: capitalize;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: map.get($font-sizes, "lg");
+    text-align: center;
+    font-family: var(--playful-font);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: map.get($spacing, "xl") 0;
+
+    clip-path: circle(0% at 100% 0%);
+    transition: clip-path 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  &--closed .nav__adaptive-menu {
+    transition-delay: 300ms;
+  }
+
+  &--opened .nav__adaptive-menu {
+    clip-path: circle(150% at 100% 0%);
+  }
+
+  &__adaptive-menu-wrapper {
+    content: "";
+
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0);
+
+    transition: background-color $base-transition ease;
+  }
+
+  &--closed .nav__adaptive-menu-wrapper {
+    transition-delay: 500ms;
+  }
+
+  &--opened .nav__adaptive-menu-wrapper {
+    background-color: color-mix(
+      in srgb,
+      var(--bg-color-invert) 60%,
+      transparent
+    );
+    pointer-events: visible;
+  }
+
+  &__adaptive-menu::before {
+    content: "";
+  }
+
+  &__adaptive-menu-list {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: map.get($spacing, "lg");
+  }
+
+  &__adaptive-menu-item {
+    transition:
+      opacity $base-transition ease,
+      transform $base-transition ease-in;
+  }
+
+  &__adaptive-menu-item:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  &__adaptive-menu-link {
+    display: block;
+    transform-origin: bottom left;
+    opacity: 0;
+    transform: rotate(5deg) translateY(50px);
+
+    transition:
+      opacity calc($base-transition * 2) ease,
+      transform calc($base-transition * 2) ease;
+  }
+
+  &--opened .nav__adaptive-menu-link {
+    opacity: 1;
+    transform: rotate(0) translateY(0);
+    transition-delay: calc($base-transition * 2);
+  }
+
+  &__adaptive-menu-close-btn {
+    cursor: pointer;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__adaptive-menu-close-btn-wrapper {
+    position: relative;
+  }
+
+  &__adaptive-menu-close-btn-wrapper::before,
+  &__adaptive-menu-close-btn-wrapper::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: rotate(0) translateY(-50%);
+    opacity: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: var(--bg-color-invert);
+    transition:
+      opacity $base-transition ease,
+      transform $base-transition ease;
+  }
+
+  &--opened .nav__adaptive-menu-close-btn-wrapper::before,
+  &--opened .nav__adaptive-menu-close-btn-wrapper::after {
+    transition-delay: 600ms;
+  }
+
+  &--opened .nav__adaptive-menu-close-btn-wrapper::before,
+  &--opened .nav__adaptive-menu-close-btn-wrapper::after {
+    opacity: 1;
+  }
+
+  &--opened .nav__adaptive-menu-close-btn-wrapper::before {
+    transform: rotate(45deg) translateY(-50%);
+  }
+
+  &--opened .nav__adaptive-menu-close-btn-wrapper::after {
+    transform: rotate(-45deg) translateY(-50%);
+  }
+}
+
+@keyframes nav-lines {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

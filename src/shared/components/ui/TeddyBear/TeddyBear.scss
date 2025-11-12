@@ -1,0 +1,91 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.teddy {
+  --teddy-wrapper-size: 50px;
+
+  display: inline-block;
+  padding: map.get($spacing, "xs");
+  background-color: map.get($colors, "pink");
+  border-radius: map.get($radius, "md");
+
+  width: var(--teddy-wrapper-size);
+  height: var(--teddy-wrapper-size);
+
+  @include on-tablet {
+    --teddy-wrapper-size: 60px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover svg #ear-1 {
+    animation: shaking 500ms ease;
+    transform-origin: bottom right;
+  }
+
+  &:hover svg #ear-2 {
+    animation: shaking-mirrored 500ms ease;
+    transform-origin: bottom left;
+  }
+
+  &:hover svg #head {
+    animation: shaking-mirrored 500ms ease;
+    transform-origin: center center;
+  }
+
+  svg #eye-pupil,
+  svg #eye-pupil_2 {
+    transition: transform 500ms ease;
+  }
+
+  &:hover svg #eye-pupil {
+    transform: translate(1px, -1px);
+  }
+
+  &:hover svg #eye-pupil_2 {
+    transform: translate(-1px, -1px);
+  }
+}
+
+$ear-offset: 2deg;
+
+@keyframes shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-$ear-offset);
+  }
+  50% {
+    transform: rotate($ear-offset);
+  }
+  75% {
+    transform: rotate(-$ear-offset);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes shaking-mirrored {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate($ear-offset);
+  }
+  50% {
+    transform: rotate(-$ear-offset);
+  }
+  75% {
+    transform: rotate($ear-offset);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
