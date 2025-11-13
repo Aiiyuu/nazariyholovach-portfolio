@@ -19,6 +19,10 @@
     "name": "Todo App",
     "slogan": "Будь організованим. Виконуй справи"
   },
+  "terraAlpha": {
+    "name": "Terra Alpha",
+    "slogan": "Всесвіт стратегії"
+  },
 
   "categoryTitle": "Категорія",
   "tagsTitle": "Теги",
@@ -35,7 +39,8 @@
     "logic": "Логіка",
     "puzzle": "Головоломка",
     "office": "Офіс",
-    "career": "Кар'єра"
+    "career": "Кар'єра",
+    "strategy": "Стратегія"
   },
 
   "categories": {

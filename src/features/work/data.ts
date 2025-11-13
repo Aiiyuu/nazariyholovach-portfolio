@@ -4,6 +4,7 @@ import _2048Thumbnail from "./assets/images/2048.webp";
 import astroBlasterThumbnail from "./assets/images/astro-blaster.webp";
 import tccEscapeThumbnail from "./assets/images/TCC-Escape.webp";
 import todoAppThumbnail from "./assets/images/todoApp.webp";
+import terraAlphaThumbnail from "./assets/images/terraAlpha.webp";
 
 export const projects: Project[] = [
   {
@@ -11,7 +12,7 @@ export const projects: Project[] = [
     thumbnail: metThumbnail,
     stack: ["HTML", "Sass", "JavaScript"],
     overlay: "light",
-    demoLink: "https: //aiiyuu.github.io/layout_landing-page/",
+    demoLink: "https://aiiyuu.github.io/layout_landing-page/",
     category: Category.ART,
     tags: [Tag.ART, Tag.MUSEUM],
   },
@@ -20,7 +21,7 @@ export const projects: Project[] = [
     thumbnail: astroBlasterThumbnail,
     stack: ["TypeScript", "OOP", "Canvas"],
     overlay: "light",
-    demoLink: "https: //aiiyuu.github.io/Astro-Blaster/",
+    demoLink: "https://aiiyuu.github.io/Astro-Blaster/",
     category: Category.VIDEO_GAMES,
     tags: [Tag.SPACE, Tag.ADVENTURE],
   },
@@ -29,7 +30,7 @@ export const projects: Project[] = [
     thumbnail: tccEscapeThumbnail,
     stack: ["TypeScript", "OOP", "Canvas"],
     overlay: "dark",
-    demoLink: "https: //aiiyuu.github.io/tcc-chase-game/",
+    demoLink: "https://aiiyuu.github.io/tcc-chase-game/",
     category: Category.VIDEO_GAMES,
     tags: [Tag.RACE, Tag.ADVENTURE],
   },
@@ -38,7 +39,7 @@ export const projects: Project[] = [
     thumbnail: _2048Thumbnail,
     stack: ["JavaScript", "OOP", "Sass"],
     overlay: "dark",
-    demoLink: "https: //aiiyuu.github.io/js_2048_game/",
+    demoLink: "https://aiiyuu.github.io/js_2048_game/",
     category: Category.VIDEO_GAMES,
     tags: [Tag.LOGIC, Tag.PUZZLE],
   },
@@ -47,8 +48,17 @@ export const projects: Project[] = [
     thumbnail: todoAppThumbnail,
     stack: ["React", "TypeScript", "APIs"],
     overlay: "dark",
-    demoLink: "https: //aiiyuu.github.io/react_todo-app-with-api/",
+    demoLink: "https://aiiyuu.github.io/react_todo-app-with-api/",
     category: Category.WORK_SCHOOL,
     tags: [Tag.CAREER, Tag.OFFICE],
+  },
+  {
+    id: "terraAlpha",
+    thumbnail: terraAlphaThumbnail,
+    stack: ["TypeScript", "Firebase", "HTML"],
+    overlay: "light",
+    demoLink: "https://aiiyuu.github.io/TerraAlpha/",
+    category: Category.VIDEO_GAMES,
+    tags: [Tag.STRATEGY, Tag.SPACE],
   },
 ];

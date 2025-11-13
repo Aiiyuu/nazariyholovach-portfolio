@@ -19,6 +19,10 @@
     "name": "Todo App",
     "slogan": "Stay organized. Get things done"
   },
+  "terraAlpha": {
+    "name": "Terra Alpha",
+    "slogan": "A Universe of Strategy"
+  },
 
   "categoryTitle": "Category",
   "tagsTitle": "Tags",
@@ -35,7 +39,8 @@
     "logic": "Logic",
     "puzzle": "Puzzle",
     "office": "Office",
-    "career": "Career"
+    "career": "Career",
+    "strategy": "Strategy"
   },
 
   "categories": {

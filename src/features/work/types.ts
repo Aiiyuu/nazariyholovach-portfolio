@@ -34,4 +34,5 @@ export enum Tag {
   PUZZLE = "puzzle",
   OFFICE = "office",
   CAREER = "career",
+  STRATEGY = "strategy",
 }
