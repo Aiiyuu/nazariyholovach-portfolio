@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.route-transition {
+  svg {
+    position: fixed;
+    z-index: 99;
+    left: 0;
+
+    path {
+      transition: fill $theme-transition ease;
+      fill: var(--bg-color-invert);
+    }
+  }
+
+  &__title {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    font-size: map.get($font-sizes, "xl");
+    text-align: center;
+
+    @include on-tablet {
+      font-size: map.get($font-sizes, "4xl");
+    }
+
+    color: var(--text-color-invert);
+    text-transform: uppercase;
+
+    span[data-nospace="true"] {
+      margin-right: 0;
+    }
+  }
+}

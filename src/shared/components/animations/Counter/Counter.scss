@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+
+.counter {
+  display: inline-flex;
+  overflow: hidden;
+
+  &__digit {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__digit-item {
+    padding-block: map.get($spacing, "xs");
+  }
+}

@@ -1,0 +1,109 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/layout";
+
+.footer {
+  margin-top: map.get($spacing, "3xl");
+  @extend .container;
+
+  &__contact {
+    background-color: var(--bg-color-invert);
+    color: var(--text-color-invert);
+    border-radius: map.get($radius, "3xl");
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: map.get($spacing, "md");
+    padding: map.get($spacing, "xl");
+
+    @include on-tablet {
+      gap: map.get($spacing, "lg");
+      padding: map.get($spacing, "3xl");
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: map.get($spacing, "sm");
+
+    text-transform: uppercase;
+    font-size: map.get($font-sizes, "md");
+
+    @include on-tablet {
+      font-size: map.get($font-sizes, "lg");
+    }
+  }
+
+  &__title-main {
+    font-size: map.get($font-sizes, "lg");
+
+    @include on-tablet {
+      font-size: map.get($font-sizes, "xl");
+    }
+  }
+
+  &__text {
+    @include on-tablet {
+      font-size: map.get($font-sizes, "sm");
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: map.get($spacing, "3xl") map.get($spacing, "lg");
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__social-networks-list {
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, "lg");
+  }
+
+  &__social-networks-item {
+    svg {
+      width: 35px;
+      height: 35px;
+
+      path {
+        transition: fill $theme-transition ease;
+        fill: var(--bg-color-invert);
+      }
+    }
+  }
+
+  &__copyright-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: map.get($spacing, "sm");
+    margin-top: map.get($spacing, "lg");
+    margin-inline: auto;
+
+    @include on-tablet {
+      margin-inline: 0;
+      margin-top: 0;
+      align-items: flex-end;
+    }
+  }
+
+  &__copyright-btn {
+    font-size: map.get($font-sizes, "sm");
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

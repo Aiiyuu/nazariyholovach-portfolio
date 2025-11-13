@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "../../../styles/variables" as *;
+
+.input-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: map.get($spacing, "md");
+
+  overflow: hidden;
+  border-radius: map.get($radius, "lg");
+  background-color: var(--bg-color-lighter);
+  padding: map.get($spacing, "sm");
+
+  &:focus-within {
+    box-shadow: inset 0 0 0 1px var(--bg-color-invert);
+  }
+
+  &__input {
+    padding-left: map.get($spacing, "sm");
+    background: transparent;
+    color: var(--text-color-lighter);
+    caret-color: var(--text-color-lighter);
+    font-size: map.get($font-sizes, "xs");
+  }
+
+  &__action {
+    width: 20px;
+    height: 20px;
+
+    button {
+      cursor: pointer;
+    }
+
+    .input-field__icon {
+      svg {
+        width: 100%;
+        height: 100%;
+
+        path {
+          transition: fill $theme-transition ease;
+          fill: var(--text-color-lighter);
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./i18n";
-import Root from "./Roots";
-import "./styles/index.scss";
+import { HashRouter as Router } from "react-router-dom";
+
+import "@/shared/styles/index.scss";
+import "./shared/i18n";
+import { AppRoutes } from "./app/routes";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Root />
-  </StrictMode>
+    <Router>
+      <AppRoutes />
+    </Router>
+  </StrictMode>,
 );
