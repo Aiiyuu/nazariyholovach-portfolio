@@ -2,7 +2,8 @@ import React, { useCallback, useEffect } from "react";
 import "./ProjectFilters.scss";
 import { Category, Tag } from "@/features/work";
 import { useProjectFilters } from "@/features/work/hooks";
-import { InputField, Dropdown } from "@/shared/components/ui";
+import { Dropdown } from "@/shared/components/ui";
+import { InputField } from "@/shared/components/form/";
 import { ProjectFiltersType } from "@/features/work";
 import { useTranslation } from "react-i18next";
 

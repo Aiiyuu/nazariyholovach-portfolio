@@ -1,0 +1,43 @@
+@use "sass:map";
+@use "../../../../shared/styles/variables" as *;
+@use "../../../../shared/styles/mixins" as *;
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing, "md");
+
+  &__count-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    width: 80px;
+    height: 80px;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      path {
+        fill: var(--bg-color-invert);
+        transition: fill $theme-transition ease;
+      }
+    }
+  }
+
+  &__count {
+    position: relative;
+    z-index: 1;
+    font-size: map.get($font-sizes, "lg");
+    color: var(--text-color-invert);
+  }
+
+  &__text {
+    max-width: 100px;
+  }
+}

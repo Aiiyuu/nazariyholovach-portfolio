@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { TFunction, i18n as I18nType } from "i18next";
-import { ProjectsList, ProjectFilters } from "./components";
+import { ProjectsList, ProjectFilters, ProjectWelcome } from "./components";
 import { projects } from "./data";
 import { Category, Project, Tag, ProjectFiltersType } from "./types";
 import { Language } from "@/shared/components/ui";
@@ -80,11 +80,17 @@ const WorkPage: React.FC = () => {
   const hasMatchingProjects = preparedProjects.length > 0;
 
   if (!hasProjects) {
-    return <p className="no-projects">{t("noProjects")}</p>;
+    return (
+      <>
+        <ProjectWelcome />
+        <p className="no-projects">{t("noProjects")}</p>
+      </>
+    );
   }
 
   return (
     <>
+      <ProjectWelcome />
       <ProjectFilters onFilter={handleFilterChanges} />
 
       {!hasMatchingProjects ? (

@@ -5,7 +5,11 @@ import { useTranslation } from "react-i18next";
 import { Pillow } from "@/shared/components/ui";
 import { SlideIn } from "@/shared/components/animations";
 import { motion } from "framer-motion";
-import { thumbnailVariants, transition } from "./anims";
+import {
+  thumbnailHeaderVariants,
+  thumbnailVariants,
+  transition,
+} from "./anims";
 
 type Props = { project: Project };
 
@@ -15,17 +19,23 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 
   return (
     <article className="work-card">
-      <div className="work-card__header">
+      <motion.div
+        className="work-card__header"
+        variants={thumbnailHeaderVariants}
+        initial="initial"
+        whileInView="visible"
+      >
         <motion.img
           className="work-card__thumbnail"
           loading="lazy"
           src={thumbnail}
           alt={id}
           variants={thumbnailVariants}
+          initial="initial"
           whileHover="hover"
           transition={transition}
         />
-      </div>
+      </motion.div>
 
       <div className="work-card__footer">
         <SlideIn delay={0.3}>
